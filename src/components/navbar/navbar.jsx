@@ -75,9 +75,11 @@ const Navbar = () => {
         </div>
       </div>
       <div className="bg-yellow-500 h-10">
-        <ul className="flex justify-between items-center">
+        <ul className="flex justify-between items-center h-full ">
           {data.map((item) => (
-            <li className="hover:bg-red-500">{item.text}</li>
+            <li className="italic font-semibold cursor-pointer felx justify-center items-center h-full hover:bg-yellow-600 p-2 ">
+              {item.text}
+            </li>
           ))}
         </ul>
       </div>
