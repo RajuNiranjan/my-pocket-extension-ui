@@ -4,6 +4,8 @@ import Service from "./service";
 import Sectionone from "./sectionone";
 import Sectiontwo from "./sectiontwo";
 import Slider from "../slider/slider";
+import Sectionthree from "./sectionthree";
+import Sectionfour from "./sectionfour";
 
 const Main = () => {
   return (
@@ -13,6 +15,8 @@ const Main = () => {
       <Sectionone />
       <Sectiontwo />
       <Slider />
+      <Sectionthree />
+      <Sectionfour />
     </div>
   );
 };

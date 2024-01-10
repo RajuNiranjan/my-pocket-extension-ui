@@ -29,6 +29,10 @@ export default function Slider() {
         className="mySwiper">
         <SwiperSlide>
           <SliderMedia />
+          <div className="flex gap-2 justify-center items-center mb-5 ">
+            <button className="border bg-white px-2 rounded-sm">prev</button>
+            <button className="border bg-white px-2 rounded-sm">next</button>
+          </div>
         </SwiperSlide>
       </Swiper>
     </>
