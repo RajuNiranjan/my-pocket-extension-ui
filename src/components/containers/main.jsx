@@ -6,6 +6,7 @@ import Sectiontwo from "./sectiontwo";
 import Slider from "../slider/slider";
 import Sectionthree from "./sectionthree";
 import Sectionfour from "./sectionfour";
+import Sectionfive from "./sectionfive";
 
 const Main = () => {
   return (
@@ -17,6 +18,7 @@ const Main = () => {
       <Slider />
       <Sectionthree />
       <Sectionfour />
+      <Sectionfive />
     </div>
   );
 };
