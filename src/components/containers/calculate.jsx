@@ -10,11 +10,11 @@ const Calculate = () => {
   return (
     <section className=" my-10 flex h-[600px] gap-5 p-10">
       <div className="basis-[25%]">
-        <img className="w-32" src={service} alt="" />
+        <img className="w-28" src={service} alt="" />
       </div>
       <div className="basis-[50%]">
         <div className="absolute flex">
-          <img className="h-[500px]" src={student} alt="" />
+          <img className="h-[400px] mt-20" src={student} alt="" />
           <div>
             <div className="h-[550px] w-[500px] bg-[#0009] rounded-md">
               <div className="p-10 w-full flex flex-col gap-5 justify-center items-center ">
@@ -41,7 +41,7 @@ const Calculate = () => {
         </div>
         <img
           src={banner}
-          className="relative w-36 ml-[333px] mt-[-20px]"
+          className="relative w-36 ml-[265px] mt-[-20px]"
           alt=""
         />
       </div>

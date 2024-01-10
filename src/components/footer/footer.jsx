@@ -40,7 +40,7 @@ const icons = [
 const Footer = () => {
   return (
     <>
-      <div className="bg-[#10151c] p-5">
+      <div className=" font-serif bg-[#10151c] p-5">
         <div className=" grid grid-cols-4 gap-5 container m-auto italic text-slate-300">
           <div className="">
             <div className="flex items-center gap-2">
@@ -123,14 +123,14 @@ const Footer = () => {
         </div>
       </div>
       <div className="bg-[#1a202a] flex justify-center flex-col items-center  p-10 italic">
-        <div className="flex justify-center items-center">
+        <div className="font-serif flex justify-center items-center">
           {icons.map((icon) => (
             <div className="border border-white p-1 max-w-max justify-center flex items-center rounded-full cursor-pointer mr-2">
               <span className="text-white  rounded-full">{icon.icon}</span>
             </div>
           ))}
         </div>
-        <div className="italic text-center text-white text-sm mt-2">
+        <div className="font-serif italic text-center text-white text-sm mt-2">
           <p className="text-blue-500">Corporate Address:</p>
           <p>10 Upper Bank Street London, London E145GH United Kingdom</p>
           <p>Telephone: + 44 (0)20 3290 0046</p>

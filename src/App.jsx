@@ -6,7 +6,7 @@ import Main from "./components/containers/main";
 
 const App = () => {
   return (
-    <div className="bg-[url('./assets/background.png')] h-max">
+    <div className="bg-[url('./assets/background.png')] h-max font-serif">
       <>
         <Navbar />
         <Main />

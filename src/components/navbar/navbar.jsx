@@ -55,7 +55,7 @@ const data = [
 
 const Navbar = () => {
   return (
-    <div>
+    <div className="font-serif sticky top-0 z-30">
       <div className="bg-[#092d50] text-white px-20 py-5 flex justify-between items-center">
         <div>
           <img className="w-36" src={logo} alt="" />
@@ -74,10 +74,10 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="bg-yellow-500 h-10">
+      <div className="bg-yellow-500">
         <ul className="flex justify-between items-center h-full ">
           {data.map((item) => (
-            <li className="italic font-semibold cursor-pointer felx justify-center items-center h-full hover:bg-yellow-600 p-2 ">
+            <li className="italic cursor-pointer felx justify-center items-center text-[10px] h-full hover:bg-yellow-400 p-2 ">
               {item.text}
             </li>
           ))}
