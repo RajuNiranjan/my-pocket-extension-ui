@@ -13,7 +13,7 @@ const Calculate = () => {
         <img className="w-32" src={service} alt="" />
       </div>
       <div className="basis-[50%]">
-        <div className="flex">
+        <div className="absolute flex">
           <img className="h-[500px]" src={student} alt="" />
           <div>
             <div className="h-[550px] w-[500px] bg-[#0009] rounded-md">
@@ -39,6 +39,11 @@ const Calculate = () => {
             </div>
           </div>
         </div>
+        <img
+          src={banner}
+          className="relative w-36 ml-[333px] mt-[-20px]"
+          alt=""
+        />
       </div>
     </section>
   );
