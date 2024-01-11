@@ -1,6 +1,7 @@
 import React from "react";
 import order from "../../assets/Order-Now-Button-Vector.png";
 import { FaWhatsapp } from "react-icons/fa";
+import Vedio from "./vedio";
 
 const Sectionone = () => {
   return (
@@ -45,6 +46,40 @@ const Sectionone = () => {
           hailed as the best dissertation help for providing PhD thesis,
           assignments and essay writing.
         </p>
+      </div>
+      <div className="flex gap-10 p-10">
+        <div>
+          <Vedio
+            video="https://www.youtube.com/embed/YVbMIIdpvWQ?si=v8VUKDtrNbIJMoR7"
+            title="YouTube video player"
+          />
+        </div>
+        <div>
+          <p className="text-[22px]">
+            ✔ Established 2001
+            <br />
+            ✔ 24 Years of Successful Track Record
+            <br />
+            ✔ PhD Qualified Writers
+            <br />
+            ✔ Top Notch Quality
+            <br />
+            ✔ Enjoy Full Confidentiality
+            <br />
+            ✔ Plagiarism Free
+            <br />
+            ✔ Free Unlimited Revisions
+            <br />
+            ✔ Professional Project Management
+            <br />
+            ✔ 5 star Reviews on Google, SiteJabber, TrustPilot
+            <br />
+            ✔ 600+ Domain Experts
+            <br />
+            ✔ 46 Project Coordinators
+            <br />✔ Guaranteed Grades
+          </p>
+        </div>
       </div>
       <div>
         <div className="my-10">

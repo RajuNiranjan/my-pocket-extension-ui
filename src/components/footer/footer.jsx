@@ -47,12 +47,12 @@ const Footer = () => {
               <span className="text-blue-500">
                 <IoHome />
               </span>
-              <h1 className="text-yellow-500 font-bold capitalize text-sm">
+              <h1 className="text-yellow-500 font-bold capitalize text-[18px]">
                 about us
               </h1>
             </div>
-            <p className="text-sm">
-              <span className="font-bold italic">
+            <p className="text-[16px]">
+              <span className="font-bold  italic">
                 Established in 2001, Projectsdeal was conceived with the vision
                 to provide the best dissertation writing services in the UK
               </span>
@@ -60,33 +60,33 @@ const Footer = () => {
               term paper and book report, that will enable our clients secure a
               good career and make their parents proud.
             </p>
-            <p className="text-sm">
+            <p className="text-[16px]">
               Thanks to your continued love and support, we have recently added
               134 new professional experts on board in addition to our current
               team.
             </p>
-            <p>More about Projectsdeal</p>
+            <p className="text-[16px]">More about Projectsdeal</p>
           </div>
           <div>
             <div className="flex gap-1 justify-start">
               <span className="text-blue-500">
                 <FaDesktop />
               </span>
-              <h1 className="text-yellow-500 font-bold capitalize text-sm">
+              <h1 className="text-yellow-500 font-bold capitalize text-[14px]">
                 {" "}
                 We are the Only Legitimate Dissertation Writing Service that is
                 Trusted & Ranked on Inc, Safe to Order Online:
               </h1>
             </div>
-            <img className="w-32" src={inc} alt="" />
-            <div className="text-sm">
-              <p className="flex items-center gap-1">
+            <img className="w-[225px]" src={inc} alt="" />
+            <div className="text-[18px]">
+              <p className="flex items-center text-[13px] gap-1">
                 <span>
                   <IoIosCall />
                 </span>{" "}
                 020 3290 0046
               </p>
-              <p>CONTACT US</p>
+              <p className="text-[13px]">CONTACT US</p>
             </div>
           </div>
           <div>
@@ -94,31 +94,37 @@ const Footer = () => {
               <span className="text-blue-500">
                 <IoChatbubbles />
               </span>
-              <h1 className="text-yellow-500 font-bold capitalize text-sm">
+              <h1 className="text-yellow-500 font-bold capitalize text-[20px]">
                 Dissertation Related Services
               </h1>
             </div>
-            <ul className="text-sm">
+            <ul className="text-[13px] flex flex-col gap-1">
               <li>Dissertation Topics</li>
+              <hr className="opacity-15" />
               <li>Do My Dissertation</li>
+              <hr className="opacity-15" />
               <li>Dissertation Proposal Writing Service</li>
+              <hr className="opacity-15" />
               <li>Literature Review Writing Service</li>
+              <hr className="opacity-15" />
               <li>Masters Dissertation Writing Service</li>
+              <hr className="opacity-15" />
               <li>PhD Dissertation Writing Service</li>
+              <hr className=" opacity-15" />
             </ul>
-            <p>Calculate Dissertation Writing</p>
+            <p className="text-[13px]">Calculate Dissertation Writing</p>
           </div>
           <div>
             <div className="flex   gap-2">
               <span className="felx items-start text-blue-500 ">
                 <FaListAlt />
               </span>
-              <h1 className="text-yellow-500 font-bold capitalize text-sm">
+              <h1 className="text-yellow-500 font-bold capitalize text-[18px]">
                 {" "}
                 For Urgent Deadline
               </h1>
             </div>
-            <p className="text-sm">Whatsapp: +44 7447 882377</p>
+            <p className="text-[15px]">Whatsapp: +44 7447 882377</p>
           </div>
         </div>
       </div>
@@ -130,7 +136,7 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        <div className="font-serif italic text-center text-white text-sm mt-2">
+        <div className="font-serif italic text-center text-white text-[16px] mt-2">
           <p className="text-blue-500">Corporate Address:</p>
           <p>10 Upper Bank Street London, London E145GH United Kingdom</p>
           <p>Telephone: + 44 (0)20 3290 0046</p>

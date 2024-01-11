@@ -75,7 +75,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="bg-yellow-500">
-        <ul className="grid grid-cols-12 text-center h-full ">
+        <ul className="flex text-center h-full ">
           {data.map((item) => (
             <li className="italic text-md cursor-pointer felx justify-center items-center text-[13px] h-full hover:bg-yellow-400 p-2 ">
               {item.text}

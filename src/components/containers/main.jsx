@@ -8,6 +8,7 @@ import Sectionthree from "./sectionthree";
 import Sectionfour from "./sectionfour";
 import Sectionfive from "./sectionfive";
 import Sectionsix from "./sectionsix";
+import Sectionseven from "./sectionseven";
 
 const Main = () => {
   return (
@@ -21,6 +22,7 @@ const Main = () => {
       <Sectionfour />
       <Sectionfive />
       <Sectionsix />
+      <Sectionseven />
     </div>
   );
 };
