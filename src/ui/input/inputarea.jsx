@@ -2,9 +2,9 @@ import React from "react";
 
 const Inpurarea = (props) => {
   return (
-    <div className="w-[450px]">
+    <div className=" py-2">
       <input
-        className="w-[400px] py-1 px-3 rounded-sm ml-6 focus:outline-none"
+        className="w-[500px] ml-[-5px] py-1 px-2 rounded-sm focus:outline-none"
         type={props.type}
         placeholder={props.placeholder}
       />

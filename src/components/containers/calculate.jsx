@@ -17,7 +17,7 @@ const Calculate = () => {
         <div className="absolute flex">
           <img className="h-[500px] mt-20" src={student} alt="" />
           <div>
-            <div className="h-[650px] w-[550px] bg-[#0009] rounded-md">
+            <div className="h-[750px] w-[550px] bg-[#000000B3] rounded-md">
               <div className="flex flex-col justify-center items-center">
                 <div className="flex justify-center gap-2 items-center text-center py-5">
                   <img className="w-10" src={index} alt="" />
@@ -31,10 +31,6 @@ const Calculate = () => {
               </div>
 
               <div className="p-10 w-full flex flex-col gap-5 justify-center items-center ">
-                <InputForm />
-                <InputForm />
-                <InputForm />
-                <InputForm />
                 <InputForm />
                 <Inpurarea placeholder="Email id:" type="email" />
                 <Inpurarea placeholder="Valid mobile number:" type="text" />
