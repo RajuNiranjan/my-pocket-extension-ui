@@ -1,7 +1,5 @@
 import React from "react";
-import img from "./assets/background.png";
 import Navbar from "./components/navbar/navbar";
-import Footer from "./components/footer/Footer";
 import Main from "./components/containers/main";
 
 const App = () => {
@@ -10,7 +8,6 @@ const App = () => {
       <>
         <Navbar />
         <Main />
-        <Footer />
       </>
     </div>
   );
