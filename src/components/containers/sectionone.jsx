@@ -25,7 +25,7 @@ const Sectionone = () => {
         </p>
       </div>
       <div>
-        <div className="flex justify-center my-5">
+        <div className="flex flex-col items-center gap-5 justify-center my-5">
           <h1 className="text-[37px]">
             Just Sit Back Relax & Consider Your Work Done!!
           </h1>
