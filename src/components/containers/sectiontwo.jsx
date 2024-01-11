@@ -62,8 +62,8 @@ const Sectiontwo = () => {
         <div className="grid grid-cols-4 gap-3 text-center">
           {icons.map((i) => (
             <div className="flex  items-center flex-col gap-1 my-10">
-              <div className="bg-[#454545] text-white w-max p-2 rounded-full  ">
-                <span className="text-xl">{i.icon}</span>
+              <div className="bg-[#454545] h-20 w-20  text-white flex justify-center items-center p-2 rounded-full  ">
+                <span className="text-4xl">{i.icon}</span>
               </div>
               <h1 className="font-bold text-2xl">{i.heading}</h1>
               <p className="font-light text-[16px]">{i.desc}</p>

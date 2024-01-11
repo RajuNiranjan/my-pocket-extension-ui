@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rotate:hover {
+  transform: rotateY(180deg);
+  transition: transform 0.5s;
+}

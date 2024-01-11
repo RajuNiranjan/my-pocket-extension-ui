@@ -3,6 +3,7 @@ import doc from "../../assets/08.png";
 import clock from "../../assets/deadline.png";
 import pers from "../../assets/satisfaction.png";
 import like from "../../assets/experience.png";
+import "../../index.css";
 
 const card = [
   {
@@ -38,7 +39,7 @@ const Sectionfour = () => {
         {card.map((i) => (
           <div className="w-92 flex flex-col items-center p-5 rounded-md bg-gradient-to-t from-blue-950 to-slate-700 gap-3  ">
             <div>
-              <img src={i.icon} alt="" />
+              <img className="rotate" src={i.icon} alt="" />
             </div>
             <p className="text-white text-[15px]">{i.desc}</p>
           </div>
