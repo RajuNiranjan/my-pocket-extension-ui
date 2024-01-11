@@ -27,7 +27,7 @@ const Calculate = () => {
                 <Inpurarea placeholder="Valid mobile number:" type="text" />
                 <Inpurarea placeholder="select dd/mm/yyyy" type="date" />
                 <div className="flex flex-col justify-center items-center">
-                  <button className="flex  items-center gap-2 bg-yellow-500 rounded-md font-bold hover:bg-yellow-400 p-3 mb-2">
+                  <button className="flex  items-center gap-2 bg-yellow-500 rounded-md font-bold hover:bg-yellow-400 p-3 mb-2 text-[33px]">
                     Click To Calculate
                     <FaCalculator />
                   </button>

@@ -63,21 +63,21 @@ const Navbar = () => {
         <div className="flex items-center gap-5">
           <div>
             <p className="italic font-bold ">
-              <span className="text-md">
+              <span className="text-[18px]">
                 No. 1 Dissertation Writing Services in UK,
               </span>
-              <span className="text-sm text-yellow-500"> Since 2001!</span>
+              <span className="text-[16px] text-yellow-500"> Since 2001!</span>
             </p>
           </div>
           <div className="bg-blue-500 p-1 rounded-sm">
-            <p>call:+442032900046</p>
+            <p className="text-[16px]">call:+442032900046</p>
           </div>
         </div>
       </div>
       <div className="bg-yellow-500">
-        <ul className="flex justify-between items-center h-full ">
+        <ul className="grid grid-cols-12 text-center h-full ">
           {data.map((item) => (
-            <li className="italic cursor-pointer felx justify-center items-center text-[10px] h-full hover:bg-yellow-400 p-2 ">
+            <li className="italic text-md cursor-pointer felx justify-center items-center text-[13px] h-full hover:bg-yellow-400 p-2 ">
               {item.text}
             </li>
           ))}

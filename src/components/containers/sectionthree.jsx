@@ -6,14 +6,14 @@ const Sectionthree = () => {
       <h1 className="text-2xl mb-2 text-center text-blue-500">
         How we consistently achieve Merits and Distinctions in Dissertations?
       </h1>
-      <p className="font-light text-sm mb-2">
+      <p className="font-light text-[20px] mb-2">
         To produce such a dissertation and get high marks for it, you need to
         know how a dissertation is evaluated so that you can tailor it for a
         great evaluation. While these evaluations differ among different
         departments or universities the criteria is pretty much the same and may
         include the following:
       </p>
-      <ul className="flex flex-col gap-2 font-light text-sm mb-4">
+      <ul className="flex flex-col gap-2 font-light text-[20px] mb-4">
         <li>
           • Emphasis is mainly placed on the skill with which you have used the
           research methods to obtain scientifically presented findings as well
@@ -64,8 +64,10 @@ const Sectionthree = () => {
           the final grade is given.
         </li>
       </ul>
-      <h1 className="font-bold mb-2">We Make Dissertation Writing Easier!</h1>
-      <p className="font-light text-sm">
+      <h1 className="font-bold text-[20px] mb-2">
+        We Make Dissertation Writing Easier!
+      </h1>
+      <p className="font-light text-[20px]">
         With our dissertation writing help will make writing your dissertation
         easier. We put our wealth of experience into use and making us reliable
         and accurate dissertation help and writing services. We guarantee you

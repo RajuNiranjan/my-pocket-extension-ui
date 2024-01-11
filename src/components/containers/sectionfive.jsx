@@ -3,8 +3,8 @@ import React from "react";
 const Sectionfive = () => {
   return (
     <div>
-      <h1 className="text-xl text-center">Frequently Asked Questions</h1>
-      <p className="font-light">
+      <h1 className="text-2xl text-center">Frequently Asked Questions</h1>
+      <p className="font-light text-[20px]">
         What do you need to start writing my dissertation ? <br />
         In order to write your dissertation, we'll need the following: <br />
         1. Dissertation handbook, Proposal approved by university, ethics form{" "}

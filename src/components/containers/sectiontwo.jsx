@@ -56,7 +56,7 @@ const Sectiontwo = () => {
   return (
     <section>
       <div className="">
-        <h1 className="text-center text-4xl text-blue-700">
+        <h1 className="text-center text-[42px] text-blue-700">
           What makes Projectsdeal UK #1 Dissertation Writing Service
         </h1>
         <div className="grid grid-cols-4 gap-3 text-center">
@@ -65,23 +65,23 @@ const Sectiontwo = () => {
               <div className="bg-[#454545] text-white w-max p-2 rounded-full  ">
                 <span className="text-xl">{i.icon}</span>
               </div>
-              <h1 className="font-bold text-xl">{i.heading}</h1>
-              <p className="font-light">{i.desc}</p>
+              <h1 className="font-bold text-2xl">{i.heading}</h1>
+              <p className="font-light text-[16px]">{i.desc}</p>
             </div>
           ))}
         </div>
       </div>
       <div className="text-center flex justify-center items-center flex-col gap-3">
-        <h1 className="text-4xl text-red-500 font-bold">
+        <h1 className="text-[40px] text-red-500 font-bold">
           Simply get rid of your Dissertation worries Now:
         </h1>
-        <ol>
+        <ol className="text-[30px]">
           <li>1. Just select your domain</li>
           <li>2. Choose the exact word count</li>
           <li>3. Select the final submission date</li>
           <li>4. Get instant pricing</li>
         </ol>
-        <img className="w-60" src={ordernow} alt="" />
+        <img className="w-[400px]" src={ordernow} alt="" />
       </div>
     </section>
   );

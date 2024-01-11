@@ -27,7 +27,7 @@ const Sectionfour = () => {
   return (
     <div>
       <div className="flex flex-col gap-2 justify-center items-center">
-        <h1 className="text-xl">
+        <h1 className="text-4xl">
           Simply relieve yourself from your dissertation worries in just 1 step:
         </h1>
         <p className="font-bold bg-blue-500 text-white px-3 cursor-pointer py-2 rounded-md font-sans">
@@ -40,7 +40,7 @@ const Sectionfour = () => {
             <div>
               <img src={i.icon} alt="" />
             </div>
-            <p className="text-white">{i.desc}</p>
+            <p className="text-white text-[15px]">{i.desc}</p>
           </div>
         ))}
       </div>

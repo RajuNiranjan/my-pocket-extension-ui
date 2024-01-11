@@ -12,9 +12,9 @@ const SliderMedia = () => {
     <div className="bg-white p-3 text-center my-10">
       {sliderDataa.map((data) => (
         <div className="">
-          <p>{data.quot}</p>
-          <p className="text-yellow-400">★★★★★</p>
-          <p>- {data.author}</p>
+          <p className="text-[16px]">{data.quot}</p>
+          <p className="text-yellow-400 text-[16px]">★★★★★</p>
+          <p className="text-[16px]">- {data.author}</p>
         </div>
       ))}
     </div>

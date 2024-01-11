@@ -7,10 +7,11 @@ import Slider from "../slider/slider";
 import Sectionthree from "./sectionthree";
 import Sectionfour from "./sectionfour";
 import Sectionfive from "./sectionfive";
+import Sectionsix from "./sectionsix";
 
 const Main = () => {
   return (
-    <div className="container m-auto px-14">
+    <div className="container m-auto px-14 flex flex-col gap-5">
       <Calculate />
       <Service />
       <Sectionone />
@@ -19,6 +20,7 @@ const Main = () => {
       <Sectionthree />
       <Sectionfour />
       <Sectionfive />
+      <Sectionsix />
     </div>
   );
 };

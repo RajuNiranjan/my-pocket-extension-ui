@@ -6,11 +6,11 @@ const Sectionone = () => {
   return (
     <section>
       <div>
-        <div className="text-center text-4xl my-5 text-[#a98511]">
+        <div className="text-center text-[46px] my-5 text-[#a98511]">
           <h1>We specialise in Essays, Assignments, Courseworks, Online</h1>
           <h1>exams, and Dissertation Writing Services, Since 2001!</h1>
         </div>
-        <p className="">
+        <p className="text-[20px]">
           We have literally delivered success and helped thousands of anxious
           and vulnerable students, many many of your senior and super seniors
           peers, with Assignments, Coursework, Online exams, and Dissertations.
@@ -25,9 +25,12 @@ const Sectionone = () => {
       </div>
       <div>
         <div className="flex justify-center my-5">
-          <img className="w-52 " src={order} alt="" />
+          <h1 className="text-[37px]">
+            Just Sit Back Relax & Consider Your Work Done!!
+          </h1>
+          <img className="w-[250px] " src={order} alt="" />
         </div>
-        <p>
+        <p className="text-[20px]">
           <span className="font-bold">
             Projectsdeal is the best dissertation writing services in the UK
           </span>
@@ -46,15 +49,15 @@ const Sectionone = () => {
       <div>
         <div className="my-10">
           <div className="flex justify-center flex-col items-center gap-3 my-5">
-            <h1 className="text-3xl text-blue-700">
+            <h1 className="text-4xl text-blue-700">
               For Urgent Deadlines WhatsApp us
             </h1>
-            <div className="flex items-center bg-[#59CE72] text-white px-3 py-2 w-max rounded-md gap-1 cursor-pointer">
+            <div className="flex items-center bg-[#59CE72] text-white px-3 py-2 w-max rounded-md gap-1 text-[16px] cursor-pointer">
               <FaWhatsapp />
               <p>WhatsApp +447447882377</p>
             </div>
           </div>
-          <p>
+          <p className="text-[20px]">
             When it comes to hiring Best Dissertation Writing Service in London
             trust becomes one of the major concerns for students. Students have
             many concerns regarding the methodology, deadlines, quality of work,
@@ -62,18 +65,15 @@ const Sectionone = () => {
             revisions or amendments etc. We are so good that the results of our
             works speak for themselves as more than 82% of our clients have
             bagged for themselves Merits and Distinctions. Balancing your odd
-            Job, other imp priorities and Score!
-          </p>
-          <p>
-            A dissertation determines your overall grade and can either help
-            your academic career or break it. It requires investing time,
-            energy, motivation and skills such as research skills in order to do
-            a great job. However, to ensure that your dissertation is not only
-            accepted but also wins you a great grade and high regard, you must
-            present an original dissertation that fulfills the objectives it has
-            indicated. It should be well-researched, coherent and a
-            demonstration of knowledge applied in solving a real life situation
-            effectively.
+            Job, other imp priorities and Score! <br />A dissertation determines
+            your overall grade and can either help your academic career or break
+            it. It requires investing time, energy, motivation and skills such
+            as research skills in order to do a great job. However, to ensure
+            that your dissertation is not only accepted but also wins you a
+            great grade and high regard, you must present an original
+            dissertation that fulfills the objectives it has indicated. It
+            should be well-researched, coherent and a demonstration of knowledge
+            applied in solving a real life situation effectively.
           </p>
         </div>
       </div>

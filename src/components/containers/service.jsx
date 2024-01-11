@@ -10,10 +10,10 @@ const Service = () => {
   return (
     <section className="mt-52 py-5">
       <div className="italic font-serif flex flex-col gap-5">
-        <h1 className="font-bold text-xl text-center text-yellow-500">
+        <h1 className="font-bold text-[32px] text-center text-yellow-500">
           Dissertation Writing Services UK
         </h1>
-        <p>
+        <p className="text-[20px]">
           Projectsdeal is the UK's only dissertation writing service that is
           consistently awarded the title of "No.1 Dissertation Writing Service"
           by every major public review platform, including Google, TrustPilot,
