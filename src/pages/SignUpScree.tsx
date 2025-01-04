@@ -13,9 +13,9 @@ const SignUpScreen = () => {
   });
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2">
+    <div className="min-h-screen ">
       <div className="flex flex-col justify-center items-center p-6 sm:p-12">
-        <div className="w-full max-w-md space-y-8">
+        <div className="w-full max-w-md space-y-4">
           <div className="size-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
             <MessageSquare className="size-6 text-primary" />
           </div>
@@ -103,11 +103,21 @@ const SignUpScreen = () => {
               Create Account
             </button>
           </form>
-          <div className="flex items-center gap-2">
+          <div className="flex justify-center items-center gap-2">
             <p>Already have an account?</p>
             <NavLink to="/login" className="text-sm text-primary">
               Login
             </NavLink>
+          </div>
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-background px-2 text-muted-foreground">
+                Or continue with
+              </span>
+            </div>
           </div>
         </div>
       </div>
