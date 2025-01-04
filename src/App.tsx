@@ -1,6 +1,16 @@
+import { Navigate, Routes, Route } from "react-router-dom";
+import LogInScreen from "./pages/LogInScreen";
+import SignUpScreen from "./pages/SignUpScree";
+
 const App = () => {
   return (
-    <div className="w-[450px] min-h-screen bg-white p-4 text-red-500">App</div>
+    <div className="w-[450px] min-h-screen bg-white p-4 ">
+      <Routes>
+        <Route path="/login" element={<LogInScreen />} />
+        <Route path="/signup" element={<SignUpScreen />} />
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
+    </div>
   );
 };
 
