@@ -2,6 +2,7 @@ import { MessageSquare, User, Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 
 import { NavLink } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 const SignUpScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -119,6 +120,7 @@ const SignUpScreen = () => {
               </span>
             </div>
           </div>
+          <OAuth />
         </div>
       </div>
     </div>

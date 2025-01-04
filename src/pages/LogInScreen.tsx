@@ -2,6 +2,7 @@ import { MessageSquare, Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 
 import { NavLink } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -97,6 +98,7 @@ const LoginScreen = () => {
               </span>
             </div>
           </div>
+          <OAuth />
         </div>
       </div>
     </div>
