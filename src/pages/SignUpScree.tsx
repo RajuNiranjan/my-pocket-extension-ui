@@ -4,9 +4,13 @@ import { FormEvent, useState } from "react";
 import { NavLink } from "react-router-dom";
 import OAuth from "../components/OAuth";
 import { useAuth } from "../hooks/useAuth";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import Loader from "../ui/loader";
 
 const SignUpScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { isLoading } = useSelector((state: RootState) => state.auth);
   const { signup } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
@@ -23,6 +27,10 @@ const SignUpScreen = () => {
       userName: "",
     });
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="min-h-screen ">
