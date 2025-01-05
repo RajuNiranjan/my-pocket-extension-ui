@@ -1,6 +1,7 @@
 import { Navigate, Routes, Route } from "react-router-dom";
 import LogInScreen from "./pages/LogInScreen";
 import SignUpScreen from "./pages/SignUpScree";
+import HomeScreen from "./pages/HomeScreen";
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<LogInScreen />} />
         <Route path="/signup" element={<SignUpScreen />} />
+        <Route path="/" element={<HomeScreen />} />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </div>

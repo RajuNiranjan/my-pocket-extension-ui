@@ -1,16 +1,26 @@
 import { MessageSquare, Mail, Lock, Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 import { NavLink } from "react-router-dom";
 import OAuth from "../components/OAuth";
+import { useAuth } from "../hooks/useAuth";
 
 const LoginScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const { login } = useAuth();
   const [formData, setFormData] = useState({
-    email: "",
+    emailOrUserName: "",
     password: "",
   });
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    login(formData);
+    setFormData({
+      emailOrUserName: "",
+      password: "",
+    });
+  };
 
   return (
     <div className="min-h-screen ">
@@ -24,22 +34,27 @@ const LoginScreen = () => {
             Sign in to your account
           </p>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="form-control">
               <label className="label">
-                <span className="label-text font-medium">Email</span>
+                <span className="label-text font-medium">
+                  Email or User Name
+                </span>
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                   <Mail className="size-5 text-base-content/40" />
                 </div>
                 <input
-                  type="email"
-                  placeholder="Enter your email"
+                  type="text"
+                  placeholder="Enter your email or user name"
                   className="input input-bordered w-full pl-10"
-                  value={formData.email}
+                  value={formData.emailOrUserName}
                   onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
+                    setFormData({
+                      ...formData,
+                      emailOrUserName: e.target.value,
+                    })
                   }
                   required
                 />
@@ -67,8 +82,7 @@ const LoginScreen = () => {
                 <button
                   type="button"
                   className="absolute inset-y-0 right-0 flex items-center pr-3"
-                  onClick={() => setShowPassword(!showPassword)}
-                >
+                  onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? (
                     <EyeOff className="size-5 text-base-content/40" />
                   ) : (

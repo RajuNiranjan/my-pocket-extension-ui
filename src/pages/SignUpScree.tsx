@@ -1,17 +1,28 @@
 import { MessageSquare, User, Mail, Lock, Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 
 import { NavLink } from "react-router-dom";
 import OAuth from "../components/OAuth";
+import { useAuth } from "../hooks/useAuth";
 
 const SignUpScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const { signup } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    fullName: "",
+    userName: "",
   });
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    signup(formData);
+    setFormData({
+      email: "",
+      password: "",
+      userName: "",
+    });
+  };
 
   return (
     <div className="min-h-screen ">
@@ -25,7 +36,7 @@ const SignUpScreen = () => {
             Get started with your free account
           </p>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-medium">Full Name</span>
@@ -38,9 +49,9 @@ const SignUpScreen = () => {
                   type="text"
                   placeholder="Enter your full name"
                   className="input input-bordered w-full pl-10"
-                  value={formData.fullName}
+                  value={formData.userName}
                   onChange={(e) =>
-                    setFormData({ ...formData, fullName: e.target.value })
+                    setFormData({ ...formData, userName: e.target.value })
                   }
                   required
                 />
