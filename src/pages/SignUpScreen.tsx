@@ -28,6 +28,13 @@ const SignUpScreen = () => {
 
   return (
     <div className="w-full h-max rounded-xl border p-4 space-y-6">
+      <div className="w-full flex justify-center items-center">
+        <img
+          src={SVG.Logo}
+          alt="Logo"
+          className="w-10 h-10 rounded-xl animate-float"
+        />
+      </div>
       <h1 className="text-center text-xl font-semibold">
         Create A New Account
       </h1>

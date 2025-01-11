@@ -17,22 +17,25 @@ const App = () => {
   }, [dispatch]);
 
   return (
-    <div className="h-screen  flex justify-center items-center w-full ">
+    <div className="h-screen flex justify-center items-center w-full">
       <div className="w-[450px] h-full p-4">
         <Routes>
           <Route
             path="/login"
             element={authUser ? <Navigate to="/" /> : <LogInScreen />}
           />
+
           <Route
             path="/signup"
             element={authUser ? <Navigate to="/" /> : <SignUpScreen />}
           />
+
           <Route
             path="/"
-            element={authUser ? <HomeScreen /> : <Navigate to="/" />}
+            element={authUser ? <HomeScreen /> : <Navigate to="/login" />}
           />
-          <Route path="*" element={<Navigate to="/signup" />} />
+
+          <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
       </div>
     </div>
