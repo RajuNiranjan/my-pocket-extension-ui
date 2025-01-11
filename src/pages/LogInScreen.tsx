@@ -27,7 +27,7 @@ const LogInScreen = () => {
   };
 
   return (
-    <div className="w-full  h-max rounded-xl border p-4 space-y-6">
+    <div className="w-full  h-max  space-y-6">
       <div className="w-full flex justify-center items-center">
         <img
           src={SVG.Logo}

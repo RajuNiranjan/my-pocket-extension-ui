@@ -4,6 +4,11 @@ import Lock from "../assets/lock.svg";
 import User from "../assets/user.svg";
 import Mail from "../assets/mail.svg";
 import Logo from "../assets/logo.jpg";
+import Link from "../assets/link.svg";
+import Document from "../assets/document.svg";
+import Note from "../assets/note.svg";
+import Photo from "../assets/photo.svg";
+import Save from "../assets/save.svg";
 
 export const SVG = {
   EyeOpen,
@@ -12,4 +17,9 @@ export const SVG = {
   User,
   Mail,
   Logo,
+  Link,
+  Document,
+  Note,
+  Photo,
+  Save,
 };
