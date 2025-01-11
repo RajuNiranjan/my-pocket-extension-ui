@@ -9,7 +9,7 @@ const LogInScreen = () => {
   const { login } = useAuth();
 
   const [formData, setFormData] = useState({
-    emailOrUserName: "",
+    userNameOrEmail: "",
     password: "",
   });
 
@@ -41,7 +41,7 @@ const LogInScreen = () => {
             </div>
             <input
               type="text"
-              id="emailOrUserName"
+              id="userNameOrEmail"
               placeholder="John Deo / john@deo.com"
               className="p-4 border w-full rounded-lg px-10"
               onChange={handleChangeInput}

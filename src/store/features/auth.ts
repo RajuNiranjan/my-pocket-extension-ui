@@ -13,6 +13,7 @@ export const fetchUser = createAsyncThunk<User, void, { rejectValue: string }>(
   async (_, { rejectWithValue }) => {
     try {
       const token = localStorage.getItem("pocket");
+
       const res = await axiosInstance.get("/auth/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
