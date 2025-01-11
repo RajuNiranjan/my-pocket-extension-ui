@@ -1,18 +1,18 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import LogInScreen from "./pages/LogInScreen";
 import SignUpScreen from "./pages/SignUpScreen";
+import HomeScreen from "./pages/HomeScreen";
+import ProfileScreen from "./pages/ProfileScreen";
+import WelcomeScreen from "./pages/WelcomeScreen";
+import { Header } from "./components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { fetchUser } from "./store/features/auth";
 import { useEffect } from "react";
-import HomeScreen from "./pages/HomeScreen";
-import Header from "./components/Header";
-import ProfileScreen from "./pages/ProfileScreen";
 
 const App = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch<AppDispatch>();
-  console.log("auth-user", authUser);
 
   useEffect(() => {
     dispatch(fetchUser());
@@ -23,27 +23,21 @@ const App = () => {
       <div className="w-[450px] h-full p-4">
         {authUser && <Header />}
         <Routes>
-          <Route
-            path="/login"
-            element={authUser ? <Navigate to="/" /> : <LogInScreen />}
-          />
-
-          <Route
-            path="/signup"
-            element={authUser ? <Navigate to="/" /> : <SignUpScreen />}
-          />
-
-          <Route
-            path="/"
-            element={authUser ? <HomeScreen /> : <Navigate to="/login" />}
-          />
-
-          <Route
-            path="/profile"
-            element={authUser ? <ProfileScreen /> : <Navigate to="/login" />}
-          />
-
-          <Route path="*" element={<Navigate to="/login" />} />
+          {authUser ? (
+            // Authenticated Routes
+            <>
+              <Route path="/" element={<HomeScreen />} />
+              <Route path="/profile" element={<ProfileScreen />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </>
+          ) : (
+            <>
+              <Route path="/welcome" element={<WelcomeScreen />} />
+              <Route path="/login" element={<LogInScreen />} />
+              <Route path="/signup" element={<SignUpScreen />} />
+            </>
+          )}
+          <Route path="*" element={<Navigate to="/welcome" />} />
         </Routes>
       </div>
     </div>

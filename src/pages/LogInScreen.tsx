@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { SVG } from "../utils/svg";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useAuth } from "../hooks/useAuth.hook";
+import { LogoAnimation } from "../components/LogoAnimation";
 
 const LogInScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,13 +29,7 @@ const LogInScreen = () => {
 
   return (
     <div className="w-full  h-max  space-y-6">
-      <div className="w-full flex justify-center items-center">
-        <img
-          src={SVG.Logo}
-          alt="Logo"
-          className="w-10 h-10 rounded-xl animate-float"
-        />
-      </div>
+      <LogoAnimation />
       <h1 className="text-center text-xl font-semibold">Welcome back !!</h1>
 
       <form className="space-y-4" onSubmit={handleSubmitForm}>
