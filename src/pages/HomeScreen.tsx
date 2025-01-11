@@ -1,13 +1,7 @@
-import { SVG } from "../utils/svg";
-
 const HomeScreen = () => {
   return (
     <div>
-      <img
-        src={SVG.Logo}
-        alt="Logo"
-        className="w-10 h-10 rounded-xl animate-float"
-      />
+      <h1>Home Screen</h1>
     </div>
   );
 };

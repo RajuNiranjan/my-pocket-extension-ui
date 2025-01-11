@@ -17,7 +17,7 @@ export const fetchUser = createAsyncThunk<User, void, { rejectValue: string }>(
       const res = await axiosInstance.get("/auth/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      return res.data;
+      return res.data.user;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       return rejectWithValue(

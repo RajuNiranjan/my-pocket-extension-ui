@@ -6,6 +6,8 @@ import { AppDispatch, RootState } from "./store/store";
 import { fetchUser } from "./store/features/auth";
 import { useEffect } from "react";
 import HomeScreen from "./pages/HomeScreen";
+import Header from "./components/Header";
+import ProfileScreen from "./pages/ProfileScreen";
 
 const App = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
@@ -19,6 +21,7 @@ const App = () => {
   return (
     <div className="h-screen flex justify-center items-center w-full">
       <div className="w-[450px] h-full p-4">
+        {authUser && <Header />}
         <Routes>
           <Route
             path="/login"
@@ -33,6 +36,11 @@ const App = () => {
           <Route
             path="/"
             element={authUser ? <HomeScreen /> : <Navigate to="/login" />}
+          />
+
+          <Route
+            path="/profile"
+            element={authUser ? <ProfileScreen /> : <Navigate to="/login" />}
           />
 
           <Route path="*" element={<Navigate to="/login" />} />
