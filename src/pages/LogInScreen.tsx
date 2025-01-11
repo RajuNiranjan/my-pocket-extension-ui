@@ -1,12 +1,15 @@
 import { NavLink } from "react-router-dom";
 import { SVG } from "../utils/svg";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useAuth } from "../hooks/useAuth.hook";
 
 const LogInScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
 
+  const { login } = useAuth();
+
   const [formData, setFormData] = useState({
-    userNameOrEmail: "",
+    emailOrUserName: "",
     password: "",
   });
 
@@ -20,7 +23,7 @@ const LogInScreen = () => {
 
   const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("LogIn form data", formData);
+    login(formData);
   };
 
   return (
@@ -38,7 +41,7 @@ const LogInScreen = () => {
             </div>
             <input
               type="text"
-              id="userNameOrEmail"
+              id="emailOrUserName"
               placeholder="John Deo / john@deo.com"
               className="p-4 border w-full rounded-lg px-10"
               onChange={handleChangeInput}

@@ -1,9 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { SVG } from "../utils/svg";
 import { ChangeEvent, FormEvent, useState } from "react";
+import { useAuth } from "../hooks/useAuth.hook";
 
 const SignUpScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { signup } = useAuth();
 
   const [formData, setFormData] = useState({
     userName: "",
@@ -21,7 +23,7 @@ const SignUpScreen = () => {
 
   const handleSubmitForm = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Sing Up form data", formData);
+    signup(formData);
   };
 
   return (
