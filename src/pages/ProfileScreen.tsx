@@ -1,5 +1,13 @@
+import { useAuth } from "../hooks/useAuth.hook";
+
 const ProfileScreen = () => {
-  return <div>ProfileScreen</div>;
+  const { logout } = useAuth();
+
+  return (
+    <div>
+      <button onClick={() => logout()}>LogOut</button>
+    </div>
+  );
 };
 
 export default ProfileScreen;

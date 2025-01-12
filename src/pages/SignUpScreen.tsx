@@ -110,7 +110,7 @@ const SignUpScreen = () => {
 
         <button
           type="submit"
-          className="w-full p-4 rounded-lg bg-black text-white font-bold tracking-wide">
+          className="bg-yellow-300 my-4 text-black font-medium p-2 w-full rounded-lg">
           Create Account
         </button>
       </form>

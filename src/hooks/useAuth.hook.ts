@@ -4,6 +4,7 @@ import {
   authPending,
   authRejected,
   fetchUser,
+  logOut,
 } from "../store/features/auth";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
@@ -45,5 +46,10 @@ export const useAuth = () => {
     }
   };
 
-  return { signup, login };
+  const logout = () => {
+    dispatch(logOut());
+    dispatch(fetchUser());
+  };
+
+  return { signup, login, logout };
 };

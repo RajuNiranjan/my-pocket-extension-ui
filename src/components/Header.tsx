@@ -9,7 +9,9 @@ export const Header = () => {
 
   return (
     <nav className="h-10 sticky top-0 z-50 flex justify-between items-center  ">
-      <LogoAnimation />
+      <div>
+        <LogoAnimation />
+      </div>
       <NavLink to="/profile">
         <img
           src={authUser?.profilePic}

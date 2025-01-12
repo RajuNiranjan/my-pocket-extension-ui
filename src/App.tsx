@@ -9,14 +9,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
 import { fetchUser } from "./store/features/auth";
 import { useEffect } from "react";
+import { LogoAnimation } from "./components/LogoAnimation";
 
 const App = () => {
-  const { authUser } = useSelector((state: RootState) => state.auth);
+  const { authUser, isAuthLoading } = useSelector(
+    (state: RootState) => state.auth
+  );
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     dispatch(fetchUser());
   }, [dispatch]);
+
+  if (isAuthLoading) {
+    return (
+      <div className="h-screen w-[450px] flex justify-center items-center">
+        <LogoAnimation />
+      </div>
+    );
+  }
 
   return (
     <div className="h-screen flex justify-center items-center w-full">

@@ -28,7 +28,7 @@ const LogInScreen = () => {
   };
 
   return (
-    <div className="w-full  h-max  space-y-6">
+    <div className="w-full h-max space-y-6">
       <LogoAnimation />
       <h1 className="text-center text-xl font-semibold">Welcome back !!</h1>
 
@@ -89,7 +89,7 @@ const LogInScreen = () => {
 
         <button
           type="submit"
-          className="w-full p-4 rounded-lg bg-black text-white font-bold tracking-wide">
+          className="bg-yellow-300 my-4 text-black font-medium p-2 w-full rounded-lg">
           Log In
         </button>
       </form>

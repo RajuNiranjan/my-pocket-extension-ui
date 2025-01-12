@@ -45,6 +45,10 @@ const authSlice = createSlice({
       state.isAuthLoading = false;
       state.error = null;
     },
+    logOut: (state) => {
+      localStorage.removeItem("pocket");
+      state.authUser = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -67,5 +71,6 @@ const authSlice = createSlice({
   },
 });
 
-export const { authFullFilled, authPending, authRejected } = authSlice.actions;
+export const { authFullFilled, authPending, authRejected, logOut } =
+  authSlice.actions;
 export default authSlice.reducer;
