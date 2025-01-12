@@ -14,11 +14,13 @@ export const Header = () => {
         <LogoAnimation />
       </div>
       <div className="flex items-center gap-4">
-        <img
-          src={SVG.Message}
-          alt="Logo"
-          className="w-5 h-5 rounded-full cursor-pointer "
-        />
+        <NavLink to="/messages">
+          <img
+            src={SVG.Message}
+            alt="Logo"
+            className="w-5 h-5 rounded-full cursor-pointer "
+          />
+        </NavLink>
         <img
           src={SVG.Bell}
           alt="Logo"

@@ -1,9 +1,11 @@
-import { WelcomeCard } from "../components/WelcomeCard";
+import { AddIconCard } from "../components/AddList/AddIconCard";
 
 const HomeScreen = () => {
   return (
     <div>
-      <WelcomeCard />
+      <div className="flex flex-wrap gap-2">
+        <AddIconCard />
+      </div>
     </div>
   );
 };

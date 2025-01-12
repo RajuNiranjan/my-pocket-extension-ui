@@ -10,6 +10,7 @@ import { AppDispatch, RootState } from "./store/store";
 import { fetchUser } from "./store/features/auth";
 import { useEffect } from "react";
 import { LogoAnimation } from "./components/LogoAnimation";
+import MessageScree from "./pages/MessageScree";
 
 const App = () => {
   const { authUser, isAuthLoading } = useSelector(
@@ -31,7 +32,7 @@ const App = () => {
 
   return (
     <div className="h-screen flex justify-center items-center w-full">
-      <div className="w-[450px] h-screen  p-4">
+      <div className="w-[450px] border h-screen  p-4">
         {authUser && <Header />}
         <Routes>
           {authUser ? (
@@ -39,7 +40,7 @@ const App = () => {
             <>
               <Route path="/" element={<HomeScreen />} />
               <Route path="/profile" element={<ProfileScreen />} />
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route path="/messages" element={<MessageScree />} />
             </>
           ) : (
             <>
