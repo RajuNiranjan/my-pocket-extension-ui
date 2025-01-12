@@ -7,7 +7,7 @@ import WelcomeScreen from "./pages/WelcomeScreen";
 import { Header } from "./components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "./store/store";
-import { fetchUser } from "./store/features/auth";
+import { fetchUser } from "./store/features/auth.slice";
 import { useEffect } from "react";
 import { LogoAnimation } from "./components/LogoAnimation";
 import MessageScree from "./pages/MessageScree";

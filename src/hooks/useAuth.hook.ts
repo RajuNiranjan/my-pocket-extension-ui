@@ -5,7 +5,7 @@ import {
   authRejected,
   fetchUser,
   logOut,
-} from "../store/features/auth";
+} from "../store/features/auth.slice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
 
