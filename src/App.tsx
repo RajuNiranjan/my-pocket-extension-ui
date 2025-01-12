@@ -36,11 +36,11 @@ const App = () => {
         {authUser && <Header />}
         <Routes>
           {authUser ? (
-            // Authenticated Routes
             <>
               <Route path="/" element={<HomeScreen />} />
               <Route path="/profile" element={<ProfileScreen />} />
               <Route path="/messages" element={<MessageScree />} />
+              <Route path="*" element={<Navigate to="/" />} />
             </>
           ) : (
             <>
