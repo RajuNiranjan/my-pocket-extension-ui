@@ -11,6 +11,10 @@ import Photo from "../assets/photo.svg";
 import Save from "../assets/save.svg";
 import Bell from "../assets/bell.svg";
 import Message from "../assets/message.svg";
+import Add from "../assets/add.svg";
+import Clip from "../assets/clip.svg";
+import Send from "../assets/send.svg";
+import Key from "../assets/key.svg";
 
 export const SVG = {
   EyeOpen,
@@ -26,4 +30,8 @@ export const SVG = {
   Save,
   Bell,
   Message,
+  Add,
+  Clip,
+  Send,
+  Key,
 };
