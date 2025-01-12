@@ -9,6 +9,8 @@ import Document from "../assets/document.svg";
 import Note from "../assets/note.svg";
 import Photo from "../assets/photo.svg";
 import Save from "../assets/save.svg";
+import Bell from "../assets/bell.svg";
+import Message from "../assets/message.svg";
 
 export const SVG = {
   EyeOpen,
@@ -22,4 +24,6 @@ export const SVG = {
   Note,
   Photo,
   Save,
+  Bell,
+  Message,
 };

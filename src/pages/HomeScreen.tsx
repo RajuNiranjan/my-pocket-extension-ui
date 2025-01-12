@@ -1,5 +1,11 @@
+import { WelcomeCard } from "../components/WelcomeCard";
+
 const HomeScreen = () => {
-  return <div>HomeScreen</div>;
+  return (
+    <div>
+      <WelcomeCard />
+    </div>
+  );
 };
 
 export default HomeScreen;
