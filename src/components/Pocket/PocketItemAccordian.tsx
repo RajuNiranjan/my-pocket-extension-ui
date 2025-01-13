@@ -10,10 +10,13 @@ import { useState, useRef, useEffect } from "react";
 import { Pocket } from "@/store/types/pocket.type";
 import { SVG } from "@/utils/svg";
 import { Textarea } from "../ui/textarea";
+import { usePocket } from "@/hooks/usePocket";
 
 export const PocketItemAccordian = () => {
   const { pocketItem } = useSelector((state: RootState) => state.pocket);
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
+
+  const { DeletePocketItem } = usePocket();
 
   const handleAccordionChange = (value: string) => {
     setActiveAccordion((prev) => (prev === value ? null : value));
@@ -21,31 +24,49 @@ export const PocketItemAccordian = () => {
 
   return (
     <div>
-      {pocketItem.map((item, idx) => (
-        <Accordion
-          key={idx}
-          type="single"
-          collapsible
-          value={activeAccordion === `item-${idx}` ? `item-${idx}` : undefined}
-          className="border rounded-lg my-2 transition-all duration-300"
-          onValueChange={() => handleAccordionChange(`item-${idx}`)}>
-          <AccordionItem value={`item-${idx}`}>
-            <AccordionTrigger
-              className={`${
-                activeAccordion === `item-${idx}` ? "bg-gray-200" : "bg-inherit"
-              } p-4 hover:bg-gray-100 transition-all duration-300`}>
-              {item.title}
-            </AccordionTrigger>
-            <AccordionContentWithHeight
-              isActive={activeAccordion === `item-${idx}`}>
-              <div className="flex justify-end items-center my-2">
-                <img src={SVG.Ellips} alt="" className="w-5 h-5" />
-              </div>
-              <AccordianCard item={item} />
-            </AccordionContentWithHeight>
-          </AccordionItem>
-        </Accordion>
-      ))}
+      {Array.isArray(pocketItem) ? (
+        pocketItem.map((item, idx) => (
+          <Accordion
+            key={idx}
+            type="single"
+            collapsible
+            value={
+              activeAccordion === `item-${idx}` ? `item-${idx}` : undefined
+            }
+            className="border rounded-lg my-2 transition-all duration-300"
+            onValueChange={() => handleAccordionChange(`item-${idx}`)}>
+            <AccordionItem value={`item-${idx}`}>
+              <AccordionTrigger
+                className={`${
+                  activeAccordion === `item-${idx}`
+                    ? "bg-gray-200"
+                    : "bg-inherit"
+                } p-4 hover:bg-gray-100 transition-all duration-300`}>
+                {item.title}
+              </AccordionTrigger>
+              <AccordionContentWithHeight
+                isActive={activeAccordion === `item-${idx}`}>
+                <div className="flex justify-end items-center gap-4 my-2">
+                  <img
+                    src={SVG.Edit}
+                    alt=""
+                    className="w-5 h-5 cursor-pointer"
+                  />
+                  <img
+                    src={SVG.Bin}
+                    alt=""
+                    className="w-5 h-5 cursor-pointer"
+                    onClick={() => DeletePocketItem(item._id)}
+                  />
+                </div>
+                <AccordianCard item={item} />
+              </AccordionContentWithHeight>
+            </AccordionItem>
+          </Accordion>
+        ))
+      ) : (
+        <div>No items available.</div>
+      )}
     </div>
   );
 };

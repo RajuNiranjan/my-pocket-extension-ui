@@ -20,6 +20,8 @@ import X from "../assets/x.svg";
 import Ellips from "../assets/ellips.svg";
 import Check from "../assets/check.svg";
 import Info from "../assets/info.svg";
+import Edit from "../assets/edit.svg";
+import Bin from "../assets/bin.svg";
 
 export const SVG = {
   EyeOpen,
@@ -44,4 +46,6 @@ export const SVG = {
   Ellips,
   Check,
   Info,
+  Edit,
+  Bin,
 };

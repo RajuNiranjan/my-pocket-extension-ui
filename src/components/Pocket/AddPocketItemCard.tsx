@@ -36,7 +36,7 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addPocketItem(formData);
+    addPocketItem({formData, setShowCard});
   };
 
   return (

@@ -29,9 +29,13 @@ export const usePocket = () => {
     }
   };
 
-  const addPocketItem = async (formData: AddPocketType) => {
-    console.log("pocket form data", formData);
-
+  const addPocketItem = async ({
+    formData,
+    setShowCard,
+  }: {
+    formData: AddPocketType;
+    setShowCard: React.Dispatch<React.SetStateAction<boolean>>;
+  }) => {
     if (!authUser || !authUser._id) {
       console.error("Auth user or user ID is missing.");
       return;
@@ -56,11 +60,28 @@ export const usePocket = () => {
       );
 
       dispatch(pocketFullFill(res.data));
+      getPocketItems();
+      setShowCard(false);
     } catch (error) {
       dispatch(pocketReject(error as string));
       console.error("Error adding pocket item:", error);
     }
   };
 
-  return { addPocketItem, getPocketItems };
+  const DeletePocketItem = async (pocketId: string) => {
+    dispatch(pocketPending());
+
+    try {
+      const res = await axiosInstance.delete(`/pocket/${pocketId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      dispatch(pocketFullFill(res.data));
+      getPocketItems();
+    } catch (error) {
+      dispatch(pocketReject(error as string));
+      console.error("Error adding pocket item:", error);
+    }
+  };
+
+  return { addPocketItem, getPocketItems, DeletePocketItem };
 };

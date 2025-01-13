@@ -21,8 +21,7 @@ const HomeScreen = () => {
       )}
       {showCard && <AddPocketItemCard setShowCard={setShowCard} />}
       {!showCard && <PocketAddLaunchIcon setShowCard={setShowCard} />}
-
-      <PocketItemAccordian />
+      {!showCard && <PocketItemAccordian />}
     </div>
   );
 };
