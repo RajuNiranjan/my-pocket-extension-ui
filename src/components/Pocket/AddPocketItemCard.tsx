@@ -50,7 +50,7 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4 px-2">
+      <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2 ">
           <label className="text-sm font-medium">Title</label>
 

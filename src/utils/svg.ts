@@ -23,6 +23,7 @@ import Info from "../assets/info.svg";
 import Edit from "../assets/edit.svg";
 import Bin from "../assets/bin.svg";
 import Tag from "../assets/tag.svg";
+import Search from "../assets/search.svg";
 
 export const SVG = {
   EyeOpen,
@@ -49,5 +50,6 @@ export const SVG = {
   Info,
   Edit,
   Tag,
+  Search,
   Bin,
 };
