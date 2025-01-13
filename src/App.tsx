@@ -31,8 +31,8 @@ const App = () => {
   }
 
   return (
-    <div className="h-screen flex justify-center items-center w-full">
-      <div className="w-[450px] border h-screen  p-4">
+    <div className="min-h-screen flex justify-center items-center w-full">
+      <div className="w-[450px] min-h-[450px]  border h-screen  p-4">
         {authUser && <Header />}
         <Routes>
           {authUser ? (

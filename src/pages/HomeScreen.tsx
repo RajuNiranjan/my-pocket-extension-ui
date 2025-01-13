@@ -3,6 +3,7 @@ import { AddIconCard } from "../components/AddList/AddIconCard";
 import PocketAddLaunchIcon from "../components/Pocket/PocketAddLaunchIcon";
 import AddPocketItemCard from "../components/Pocket/AddPocketItemCard";
 import { usePocket } from "../hooks/usePocket";
+import { PocketItemAccordian } from "@/components/Pocket/PocketItemAccordian";
 
 const HomeScreen = () => {
   const [showCard, setShowCard] = useState(false);
@@ -12,7 +13,7 @@ const HomeScreen = () => {
     getPocketItems();
   }, []);
   return (
-    <div className="overflow-y-auto">
+    <div className="overflow-y-auto space-y-4">
       {!showCard && (
         <div className="flex flex-wrap gap-2">
           <AddIconCard />
@@ -20,6 +21,8 @@ const HomeScreen = () => {
       )}
       {showCard && <AddPocketItemCard setShowCard={setShowCard} />}
       {!showCard && <PocketAddLaunchIcon setShowCard={setShowCard} />}
+
+      <PocketItemAccordian />
     </div>
   );
 };
