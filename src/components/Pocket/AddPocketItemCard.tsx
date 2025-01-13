@@ -36,7 +36,7 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addPocketItem({formData, setShowCard});
+    addPocketItem({ formData, setShowCard });
   };
 
   return (
@@ -50,21 +50,25 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Title Field */}
-        <div className="space-y-2">
+      <form onSubmit={handleSubmit} className="space-y-4 px-2">
+        <div className="space-y-2 ">
           <label className="text-sm font-medium">Title</label>
-          <Input
-            type="text"
-            name="title"
-            placeholder="Title"
-            value={formData.title}
-            onChange={handleInputChange}
-            className="p-2 border w-full rounded-lg"
-          />
+
+          <div className="relative">
+            <div className="absolute w-max inset-y-3 inset-x-2">
+              <img src={SVG.Tag} alt="lock_icon" className="w-5 h-5" />
+            </div>
+            <Input
+              type="text"
+              name="title"
+              placeholder="Title"
+              value={formData.title}
+              onChange={handleInputChange}
+              className="py-5 border w-full rounded-lg px-10"
+            />
+          </div>
         </div>
 
-        {/* Conditional Fields */}
         {!isPassword && (
           <div className="space-y-2">
             <label className="text-sm font-medium">Description</label>
@@ -81,25 +85,37 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
           <div className="space-y-4">
             <div className="space-y-2">
               <label className="text-sm font-medium">User Name</label>
-              <Input
-                type="text"
-                name="pocket_userName"
-                placeholder="User Name"
-                value={formData.pocket_userName}
-                onChange={handleInputChange}
-                className="p-2 border w-full rounded-lg"
-              />
+
+              <div className="relative">
+                <div className="absolute w-max inset-y-3 inset-x-2">
+                  <img src={SVG.User} alt="lock_icon" className="w-5 h-5" />
+                </div>
+                <Input
+                  type="text"
+                  name="pocket_userName"
+                  placeholder="User Name"
+                  value={formData.pocket_userName}
+                  onChange={handleInputChange}
+                  className="py-5 border w-full rounded-lg px-10"
+                />
+              </div>
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium">Password</label>
-              <Input
-                type="text"
-                name="pocket_password"
-                placeholder="Password"
-                value={formData.pocket_password}
-                onChange={handleInputChange}
-                className="p-2 border w-full rounded-lg"
-              />
+
+              <div className="relative">
+                <div className="absolute w-max inset-y-3 inset-x-2">
+                  <img src={SVG.Lock} alt="lock_icon" className="w-5 h-5" />
+                </div>
+                <Input
+                  type="text"
+                  name="pocket_password"
+                  placeholder="Password"
+                  value={formData.pocket_password}
+                  onChange={handleInputChange}
+                  className="py-5 border w-full rounded-lg px-10"
+                />
+              </div>
             </div>
           </div>
         )}
@@ -123,14 +139,12 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
             <img src={SVG.Key} alt="" className="w-5 h-5" />
           </Button>
 
-          {/* Clip Button */}
           <Button
             type="button"
             className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 hover:bg-yellow-300">
             <img src={SVG.Clip} alt="" className="w-5 h-5" />
           </Button>
 
-          {/* Submit Button */}
           <Button
             type="submit"
             className="h-14 w-14 rounded-full flex justify-center items-center bg-yellow-300 hover:bg-yellow-400">

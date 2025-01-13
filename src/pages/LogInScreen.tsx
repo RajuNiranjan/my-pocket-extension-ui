@@ -40,14 +40,14 @@ const LogInScreen = () => {
             User Name / Email
           </label>
           <div className="relative">
-            <div className="absolute w-max inset-y-2 inset-x-2">
+            <div className="absolute w-max inset-y-3 inset-x-2">
               <img src={SVG.User} alt="lock_icon" className="w-5 h-5" />
             </div>
             <Input
               type="text"
               id="userNameOrEmail"
               placeholder="John Deo / john@deo.com"
-              className="p-4 border w-full rounded-lg px-10"
+              className="py-5 border w-full rounded-lg px-10"
               onChange={handleChangeInput}
             />
           </div>
@@ -58,19 +58,19 @@ const LogInScreen = () => {
             Password
           </label>
           <div className="relative">
-            <div className="absolute w-max inset-y-2 inset-x-2">
+            <div className="absolute w-max inset-y-3 inset-x-2">
               <img src={SVG.Lock} alt="lock_icon" className="w-5 h-5" />
             </div>
             <Input
               type={showPassword ? "text" : "password"}
               id="password"
               placeholder="********"
-              className="p-4 border w-full rounded-lg px-10"
+              className="py-5 border w-full rounded-lg px-10"
               onChange={handleChangeInput}
             />
             <div
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute cursor-pointer  w-max right-5 inset-y-2">
+              className="absolute cursor-pointer  w-max right-5 inset-y-3">
               {showPassword ? (
                 <img
                   src={SVG.EyeClose}
@@ -90,7 +90,7 @@ const LogInScreen = () => {
 
         <Button
           type="submit"
-          className="bg-yellow-300 hover:bg-yellow-400 my-4 text-black font-medium p-2 w-full rounded-lg">
+          className="bg-yellow-300 hover:bg-yellow-400 my-4 text-black font-medium py-5 w-full rounded-lg">
           Log In
         </Button>
       </form>
