@@ -1,5 +1,6 @@
 export interface Pocket {
   _id: string;
+  userId: string;
   title: string;
   description?: string;
   pocket_userName?: string;

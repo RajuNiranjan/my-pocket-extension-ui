@@ -24,7 +24,7 @@ const App = () => {
 
   if (isAuthLoading) {
     return (
-      <div className="h-screen w-[450px] flex justify-center items-center">
+      <div className="min-h-screen w-[450px] flex justify-center items-center">
         <LogoAnimation />
       </div>
     );
