@@ -83,5 +83,26 @@ export const usePocket = () => {
     }
   };
 
-  return { addPocketItem, getPocketItems, DeletePocketItem };
+  const UpdatePocketItem = async ({
+    pocketId,
+    formData,
+  }: {
+    pocketId: string;
+    formData: AddPocketType;
+  }) => {
+    dispatch(pocketPending());
+
+    try {
+      const res = await axiosInstance.patch(`/pocket/${pocketId}`, formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      dispatch(pocketFullFill(res.data));
+      getPocketItems();
+    } catch (error) {
+      dispatch(pocketReject(error as string));
+      console.error("Error adding pocket item:", error);
+    }
+  };
+
+  return { addPocketItem, getPocketItems, DeletePocketItem, UpdatePocketItem };
 };
