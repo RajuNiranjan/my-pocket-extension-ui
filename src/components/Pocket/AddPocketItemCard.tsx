@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { SVG } from "../../utils/svg";
 import { usePocket } from "../../hooks/usePocket";
+import { Button } from "../ui/button";
 
 interface AddPocketItemCardType {
   setShowCard: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,11 +41,11 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
     <div className="w-full h-full">
       {/* Close Button */}
       <div className="w-full flex justify-end">
-        <button
+        <div
           onClick={() => setShowCard(false)}
-          className="h-7 w-7 rounded-full flex justify-center items-center bg-gray-200 hover:bg-yellow-300">
+          className="h-7 w-7 cursor-pointer rounded-full flex justify-center items-center bg-gray-200 hover:bg-yellow-300">
           <img src={SVG.X} alt="" className="w-5 h-5" />
-        </button>
+        </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -104,35 +105,35 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
         {/* Buttons */}
         <div className="flex items-center gap-4">
           {/* Photo Button */}
-          <button
+          <Button
             type="button"
-            className="h-10 w-10 rounded-md flex justify-center items-center bg-gray-200 hover:bg-yellow-300">
+            className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 hover:bg-yellow-300">
             <img src={SVG.Photo} alt="" className="w-5 h-5" />
-          </button>
+          </Button>
 
           {/* Toggle Password Button */}
-          <button
+          <Button
             type="button"
             onClick={() => setIsPassword(!isPassword)}
-            className={`h-10 w-10 rounded-md flex justify-center items-center ${
+            className={`h-14 w-14 rounded-md flex justify-center items-center ${
               isPassword ? "bg-yellow-300" : "bg-gray-200 hover:bg-yellow-300"
             }`}>
             <img src={SVG.Key} alt="" className="w-5 h-5" />
-          </button>
+          </Button>
 
           {/* Clip Button */}
-          <button
+          <Button
             type="button"
-            className="h-10 w-10 rounded-md flex justify-center items-center bg-gray-200 hover:bg-yellow-300">
+            className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 hover:bg-yellow-300">
             <img src={SVG.Clip} alt="" className="w-5 h-5" />
-          </button>
+          </Button>
 
           {/* Submit Button */}
-          <button
+          <Button
             type="submit"
-            className="h-10 w-10 rounded-full flex justify-center items-center bg-yellow-300">
+            className="h-14 w-14 rounded-full flex justify-center items-center bg-yellow-300 hover:bg-yellow-400">
             <img src={SVG.Send} alt="" className="w-5 h-5" />
-          </button>
+          </Button>
         </div>
       </form>
     </div>

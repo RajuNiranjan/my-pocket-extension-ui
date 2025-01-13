@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { LogoAnimation } from "../components/LogoAnimation";
+import { Button } from "@/components/ui/button";
 
 const WelcomeScreen = () => {
   return (
@@ -21,9 +22,9 @@ const WelcomeScreen = () => {
           </div>
         </div>
         <NavLink to="/login">
-          <button className="bg-yellow-300 my-4 text-black font-medium p-2 w-full rounded-lg">
+          <Button className="bg-yellow-300 hover:bg-yellow-400 my-4 text-black font-medium p-2 w-full rounded-lg">
             Get Started
-          </button>
+          </Button>
         </NavLink>
       </div>
     </div>

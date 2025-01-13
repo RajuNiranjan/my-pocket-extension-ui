@@ -3,6 +3,7 @@ import { SVG } from "../utils/svg";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useAuth } from "../hooks/useAuth.hook";
 import { LogoAnimation } from "../components/LogoAnimation";
+import { Button } from "@/components/ui/button";
 
 const SignUpScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -87,10 +88,9 @@ const SignUpScreen = () => {
               className="p-4 border w-full rounded-lg px-10"
               onChange={handleChangeInput}
             />
-            <button
-              type="button"
+            <div
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute w-max right-5 inset-y-5">
+              className="absolute cursor-pointer w-max right-5 inset-y-5">
               {showPassword ? (
                 <img
                   src={SVG.EyeClose}
@@ -104,15 +104,15 @@ const SignUpScreen = () => {
                   className="w-5 h-5"
                 />
               )}
-            </button>
+            </div>
           </div>
         </div>
 
-        <button
+        <Button
           type="submit"
-          className="bg-yellow-300 my-4 text-black font-medium p-2 w-full rounded-lg">
+          className="bg-yellow-300 hover:bg-yellow-400 my-4 text-black font-medium p-2 w-full rounded-lg">
           Create Account
-        </button>
+        </Button>
       </form>
 
       <p className="text-sm text-center">

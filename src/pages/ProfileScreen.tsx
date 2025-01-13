@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { useAuth } from "../hooks/useAuth.hook";
 
 const ProfileScreen = () => {
@@ -5,7 +6,7 @@ const ProfileScreen = () => {
 
   return (
     <div>
-      <button onClick={() => logout()}>LogOut</button>
+      <Button onClick={() => logout()}>LogOut</Button>
     </div>
   );
 };
