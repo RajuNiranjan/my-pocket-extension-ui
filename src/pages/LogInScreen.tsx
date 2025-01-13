@@ -4,6 +4,7 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { useAuth } from "../hooks/useAuth.hook";
 import { LogoAnimation } from "../components/LogoAnimation";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const LogInScreen = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,10 +40,10 @@ const LogInScreen = () => {
             User Name / Email
           </label>
           <div className="relative">
-            <div className="absolute w-max inset-y-5 inset-x-2">
+            <div className="absolute w-max inset-y-2 inset-x-2">
               <img src={SVG.User} alt="lock_icon" className="w-5 h-5" />
             </div>
-            <input
+            <Input
               type="text"
               id="userNameOrEmail"
               placeholder="John Deo / john@deo.com"
@@ -57,10 +58,10 @@ const LogInScreen = () => {
             Password
           </label>
           <div className="relative">
-            <div className="absolute w-max inset-y-5 inset-x-2">
+            <div className="absolute w-max inset-y-2 inset-x-2">
               <img src={SVG.Lock} alt="lock_icon" className="w-5 h-5" />
             </div>
-            <input
+            <Input
               type={showPassword ? "text" : "password"}
               id="password"
               placeholder="********"
@@ -69,7 +70,7 @@ const LogInScreen = () => {
             />
             <div
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute cursor-pointer  w-max right-5 inset-y-5">
+              className="absolute cursor-pointer  w-max right-5 inset-y-2">
               {showPassword ? (
                 <img
                   src={SVG.EyeClose}

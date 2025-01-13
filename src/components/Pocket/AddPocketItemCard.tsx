@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { SVG } from "../../utils/svg";
 import { usePocket } from "../../hooks/usePocket";
 import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
 
 interface AddPocketItemCardType {
   setShowCard: React.Dispatch<React.SetStateAction<boolean>>;
@@ -52,7 +54,7 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
         {/* Title Field */}
         <div className="space-y-2">
           <label className="text-sm font-medium">Title</label>
-          <input
+          <Input
             type="text"
             name="title"
             placeholder="Title"
@@ -66,12 +68,12 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
         {!isPassword && (
           <div className="space-y-2">
             <label className="text-sm font-medium">Description</label>
-            <textarea
+            <Textarea
               name="description"
               placeholder="Description"
               value={formData.description}
               onChange={handleInputChange}
-              className="p-2 border w-full rounded-lg"></textarea>
+              className="p-2 border w-full rounded-lg"></Textarea>
           </div>
         )}
 
@@ -79,7 +81,7 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
           <div className="space-y-4">
             <div className="space-y-2">
               <label className="text-sm font-medium">User Name</label>
-              <input
+              <Input
                 type="text"
                 name="pocket_userName"
                 placeholder="User Name"
@@ -90,7 +92,7 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium">Password</label>
-              <input
+              <Input
                 type="text"
                 name="pocket_password"
                 placeholder="Password"
