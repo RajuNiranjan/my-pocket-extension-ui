@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import { Input } from "../ui/input";
 import { useState, useRef, useEffect } from "react";
 import { Pocket } from "@/store/types/pocket.type";
+import { SVG } from "@/utils/svg";
+import { Textarea } from "../ui/textarea";
 
 export const PocketItemAccordian = () => {
   const { pocketItem } = useSelector((state: RootState) => state.pocket);
@@ -36,6 +38,9 @@ export const PocketItemAccordian = () => {
             </AccordionTrigger>
             <AccordionContentWithHeight
               isActive={activeAccordion === `item-${idx}`}>
+              <div className="flex justify-end items-center my-2">
+                <img src={SVG.Ellips} alt="" className="w-5 h-5" />
+              </div>
               <AccordianCard item={item} />
             </AccordionContentWithHeight>
           </AccordionItem>
@@ -76,38 +81,87 @@ function AccordionContentWithHeight({
 }
 
 function AccordianCard({ item }: { item: Pocket }) {
+  const [showPassword, setShowPassword] = useState(false);
+  const [copy, setCopy] = useState(false);
   return (
-    <div className="w-full py-4">
+    <div className="w-full pb-4">
       <div>
         <small>Description</small>
-        <Input
-          type="text"
-          value={item.description}
-          readOnly
-          className="w-full"
-        />
+        <div className="relative">
+          <Textarea
+            value={item.description}
+            readOnly
+            className="border w-full rounded-lg resize-none"
+          />
+          <div
+            className="absolute cursor-pointer w-max right-5 inset-y-3"
+            onClick={() => setCopy((prev) => !prev)}>
+            <img
+              src={copy ? SVG.Check : SVG.Copy}
+              alt="eye_close_icon"
+              className="w-5 h-5"
+            />
+          </div>
+        </div>
       </div>
 
       {item.pocket_password && item.pocket_userName && (
         <>
-          <small>Password</small>
           <div>
             <small>Username</small>
-            <Input
-              type="text"
-              value={item.pocket_userName}
-              readOnly
-              className="w-full"
-            />
+
+            <div className="relative">
+              <div className="absolute w-max inset-y-3 inset-x-2">
+                <img src={SVG.User} alt="lock_icon" className="w-5 h-5" />
+              </div>
+              <Input
+                type="text"
+                value={item.pocket_userName}
+                readOnly
+                className="py-5 border w-full rounded-lg px-10"
+              />
+              <div
+                className="absolute cursor-pointer w-max right-5 inset-y-3"
+                onClick={() => setCopy((prev) => !prev)}>
+                <img
+                  src={copy ? SVG.Check : SVG.Copy}
+                  alt="eye_close_icon"
+                  className="w-5 h-5"
+                />
+              </div>
+            </div>
           </div>
           <div>
             <small>Password</small>
-            <Input
-              type="text"
-              value={item.pocket_password}
-              readOnly
-              className="w-full"
-            />
+            <div className="relative">
+              <div className="absolute w-max inset-y-3 inset-x-2">
+                <img src={SVG.Lock} alt="lock_icon" className="w-5 h-5" />
+              </div>
+              <Input
+                type={showPassword ? "text" : "password"}
+                value={item.pocket_password}
+                readOnly
+                className="py-5 border w-full rounded-lg px-10"
+              />
+              <div
+                className="absolute cursor-pointer w-max right-14 inset-y-3"
+                onClick={() => setShowPassword((prev) => !prev)}>
+                <img
+                  src={showPassword ? SVG.EyeOpen : SVG.EyeClose}
+                  alt="eye_close_icon"
+                  className="w-5 h-5"
+                />
+              </div>
+              <div
+                className="absolute cursor-pointer w-max right-5 inset-y-3"
+                onClick={() => setCopy((prev) => !prev)}>
+                <img
+                  src={copy ? SVG.Check : SVG.Copy}
+                  alt="eye_close_icon"
+                  className="w-5 h-5"
+                />
+              </div>
+            </div>
           </div>
         </>
       )}

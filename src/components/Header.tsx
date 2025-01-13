@@ -29,7 +29,7 @@ export const Header = () => {
         <NavLink to="/profile">
           <img
             src={authUser?.profilePic}
-            alt="Logo"
+            alt={SVG.User}
             className="w-7 h-7 rounded-full cursor-pointer "
           />
         </NavLink>

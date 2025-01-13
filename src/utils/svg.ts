@@ -15,7 +15,11 @@ import Add from "../assets/add.svg";
 import Clip from "../assets/clip.svg";
 import Send from "../assets/send.svg";
 import Key from "../assets/key.svg";
+import Copy from "../assets/copy.svg";
 import X from "../assets/x.svg";
+import Ellips from "../assets/ellips.svg";
+import Check from "../assets/check.svg";
+import Info from "../assets/info.svg";
 
 export const SVG = {
   EyeOpen,
@@ -36,4 +40,8 @@ export const SVG = {
   Send,
   Key,
   X,
+  Copy,
+  Ellips,
+  Check,
+  Info,
 };
