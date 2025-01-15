@@ -1,13 +1,20 @@
 import { useAuth } from "../hooks/useAuth.hook";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { SVG } from "@/utils/svg";
 import { Input } from "@/components/ui/input";
+import { setTheme } from "@/store/features/them.slice";
+import { useEffect } from "react";
 
 const ProfileScreen = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
+  const { theme } = useSelector((state: RootState) => state.theme);
   const { logout } = useAuth();
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    document.documentElement.className = theme;
+  }, [theme]);
   return (
     <div>
       <div className="flex justify-end items-center ">
@@ -56,6 +63,19 @@ const ProfileScreen = () => {
             />
           </div>
         </div>
+      </div>
+
+      <div>
+        <button
+          className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 cursor-pointer transition-all duration-300"
+          onClick={() => dispatch(setTheme())}
+        >
+          {theme === "light" ? (
+            <img src={SVG.Light} className="w-5 h-5" />
+          ) : (
+            <img src={SVG.Dark} className="w-5 h-5" />
+          )}
+        </button>
       </div>
     </div>
   );
