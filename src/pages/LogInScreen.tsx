@@ -45,7 +45,11 @@ const LogInScreen = () => {
           </label>
           <div className="relative">
             <div className="absolute w-max inset-y-3 inset-x-2">
-              <img src={SVG.User} alt="lock_icon" className="w-5 h-5" />
+              <img
+                src={SVG.User}
+                alt="lock_icon"
+                className="w-5 h-5 dark:invert"
+              />
             </div>
             <Input
               type="text"
@@ -66,7 +70,11 @@ const LogInScreen = () => {
           </label>
           <div className="relative">
             <div className="absolute w-max inset-y-3 inset-x-2">
-              <img src={SVG.Lock} alt="lock_icon" className="w-5 h-5" />
+              <img
+                src={SVG.Lock}
+                alt="lock_icon"
+                className="w-5 h-5 dark:invert"
+              />
             </div>
             <Input
               type={showPassword ? "text" : "password"}
@@ -83,13 +91,13 @@ const LogInScreen = () => {
                 <img
                   src={SVG.EyeClose}
                   alt="eye_close_icon"
-                  className="w-5 h-5"
+                  className="w-5 h-5 dark:invert"
                 />
               ) : (
                 <img
                   src={SVG.EyeOpen}
                   alt="eye_open_icon"
-                  className="w-5 h-5"
+                  className="w-5 h-5 dark:invert  "
                 />
               )}
             </div>

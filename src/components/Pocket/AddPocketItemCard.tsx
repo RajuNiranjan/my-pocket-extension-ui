@@ -47,7 +47,7 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
           onClick={() => setShowCard(false)}
           className="h-7 w-7 cursor-pointer rounded-full flex justify-center items-center bg-gray-200 dark:bg-gray-700 hover:bg-yellow-300 dark:hover:bg-yellow-500"
         >
-          <img src={SVG.X} alt="" className="w-5 h-5" />
+          <img src={SVG.X} alt="" className="w-5 h-5 dark:invert" />
         </div>
       </div>
 
@@ -57,7 +57,11 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
 
           <div className="relative">
             <div className="absolute w-max inset-y-3 inset-x-2">
-              <img src={SVG.Tag} alt="lock_icon" className="w-5 h-5" />
+              <img
+                src={SVG.Tag}
+                alt="lock_icon"
+                className="w-5 h-5 dark:invert dark:bg-white"
+              />
             </div>
             <Input
               type="text"
@@ -94,7 +98,11 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
 
               <div className="relative">
                 <div className="absolute w-max inset-y-3 inset-x-2">
-                  <img src={SVG.User} alt="lock_icon" className="w-5 h-5" />
+                  <img
+                    src={SVG.User}
+                    alt="lock_icon"
+                    className="w-5 h-5 dark:invert"
+                  />
                 </div>
                 <Input
                   type="text"
@@ -113,7 +121,11 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
 
               <div className="relative">
                 <div className="absolute w-max inset-y-3 inset-x-2">
-                  <img src={SVG.Lock} alt="lock_icon" className="w-5 h-5" />
+                  <img
+                    src={SVG.Lock}
+                    alt="lock_icon"
+                    className="w-5 h-5 dark:invert"
+                  />
                 </div>
                 <Input
                   type="text"
@@ -155,14 +167,14 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
             type="button"
             className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 dark:bg-gray-700 hover:bg-yellow-300 dark:hover:bg-yellow-500"
           >
-            <img src={SVG.Clip} alt="" className="w-5 h-5" />
+            <img src={SVG.Clip} alt="" className="w-5 h-5 dark:invert" />
           </Button>
 
           <Button
             type="submit"
             className="h-14 w-14 rounded-full flex justify-center items-center bg-yellow-300 dark:bg-yellow-500 hover:bg-yellow-400 dark:hover:bg-yellow-600"
           >
-            <img src={SVG.Send} alt="" className="w-5 h-5" />
+            <img src={SVG.Send} alt="" className="w-5 h-5 dark:invert" />
           </Button>
         </div>
       </form>

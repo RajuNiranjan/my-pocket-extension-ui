@@ -53,12 +53,12 @@ export const PocketItemAccordian = () => {
                   <img
                     src={SVG.Edit}
                     alt=""
-                    className="w-5 h-5 cursor-pointer"
+                    className="w-5 h-5 cursor-pointer dark:invert"
                   />
                   <img
                     src={SVG.Bin}
                     alt=""
-                    className="w-5 h-5 cursor-pointer"
+                    className="w-5 h-5 cursor-pointer dark:invert"
                     onClick={() => DeletePocketItem(item._id)}
                   />
                 </div>
@@ -109,7 +109,7 @@ function AccordianCard({ item }: { item: Pocket }) {
   const [showPassword, setShowPassword] = useState(false);
   const [copy, setCopy] = useState(false);
   return (
-    <div className="w-full pb-4">
+    <div className="w-full space-y-4 pb-4">
       <div>
         <small className="dark:text-gray-300">Description</small>
         <div className="relative">
@@ -125,7 +125,7 @@ function AccordianCard({ item }: { item: Pocket }) {
             <img
               src={copy ? SVG.Check : SVG.Copy}
               alt="eye_close_icon"
-              className="w-5 h-5"
+              className="w-5 h-5 dark:invert"
             />
           </div>
         </div>
@@ -138,7 +138,11 @@ function AccordianCard({ item }: { item: Pocket }) {
 
             <div className="relative">
               <div className="absolute w-max inset-y-3 inset-x-2">
-                <img src={SVG.User} alt="lock_icon" className="w-5 h-5" />
+                <img
+                  src={SVG.User}
+                  alt="lock_icon"
+                  className="w-5 h-5 dark:invert"
+                />
               </div>
               <Input
                 type="text"
@@ -153,7 +157,7 @@ function AccordianCard({ item }: { item: Pocket }) {
                 <img
                   src={copy ? SVG.Check : SVG.Copy}
                   alt="eye_close_icon"
-                  className="w-5 h-5"
+                  className="w-5 h-5 dark:invert"
                 />
               </div>
             </div>
@@ -162,7 +166,11 @@ function AccordianCard({ item }: { item: Pocket }) {
             <small className="dark:text-gray-300">Password</small>
             <div className="relative">
               <div className="absolute w-max inset-y-3 inset-x-2">
-                <img src={SVG.Lock} alt="lock_icon" className="w-5 h-5" />
+                <img
+                  src={SVG.Lock}
+                  alt="lock_icon"
+                  className="w-5 h-5 dark:invert"
+                />
               </div>
               <Input
                 type={showPassword ? "text" : "password"}
@@ -177,7 +185,7 @@ function AccordianCard({ item }: { item: Pocket }) {
                 <img
                   src={showPassword ? SVG.EyeOpen : SVG.EyeClose}
                   alt="eye_close_icon"
-                  className="w-5 h-5"
+                  className="w-5 h-5 dark:invert"
                 />
               </div>
               <div
@@ -187,7 +195,7 @@ function AccordianCard({ item }: { item: Pocket }) {
                 <img
                   src={copy ? SVG.Check : SVG.Copy}
                   alt="eye_close_icon"
-                  className="w-5 h-5"
+                  className="w-5 h-5 dark:invert"
                 />
               </div>
             </div>
