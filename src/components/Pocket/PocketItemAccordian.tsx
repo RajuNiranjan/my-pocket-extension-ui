@@ -33,19 +33,22 @@ export const PocketItemAccordian = () => {
             value={
               activeAccordion === `item-${idx}` ? `item-${idx}` : undefined
             }
-            className="border rounded-lg my-2 transition-all duration-300"
-            onValueChange={() => handleAccordionChange(`item-${idx}`)}>
+            className="border dark:border-gray-700 rounded-lg my-2 transition-all duration-300"
+            onValueChange={() => handleAccordionChange(`item-${idx}`)}
+          >
             <AccordionItem value={`item-${idx}`}>
               <AccordionTrigger
                 className={`${
                   activeAccordion === `item-${idx}`
-                    ? "bg-gray-200"
+                    ? "bg-gray-200 dark:bg-gray-700"
                     : "bg-inherit"
-                } p-4 hover:bg-gray-100 transition-all duration-300`}>
-                {item.title}
+                } p-4 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300`}
+              >
+                <span className="dark:text-white">{item.title}</span>
               </AccordionTrigger>
               <AccordionContentWithHeight
-                isActive={activeAccordion === `item-${idx}`}>
+                isActive={activeAccordion === `item-${idx}`}
+              >
                 <div className="flex justify-end items-center gap-4 my-2">
                   <img
                     src={SVG.Edit}
@@ -65,7 +68,7 @@ export const PocketItemAccordian = () => {
           </Accordion>
         ))
       ) : (
-        <div>No items available.</div>
+        <div className="dark:text-white">No items available.</div>
       )}
     </div>
   );
@@ -95,7 +98,8 @@ function AccordionContentWithHeight({
         transition: "max-height 0.5s ease-in-out",
         overflow: "hidden",
         padding: "0 6px 0 6px",
-      }}>
+      }}
+    >
       {children}
     </div>
   );
@@ -107,16 +111,17 @@ function AccordianCard({ item }: { item: Pocket }) {
   return (
     <div className="w-full pb-4">
       <div>
-        <small>Description</small>
+        <small className="dark:text-gray-300">Description</small>
         <div className="relative">
           <Textarea
             value={item.description}
             readOnly
-            className="border w-full rounded-lg resize-none"
+            className="border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg resize-none"
           />
           <div
             className="absolute cursor-pointer w-max right-5 inset-y-3"
-            onClick={() => setCopy((prev) => !prev)}>
+            onClick={() => setCopy((prev) => !prev)}
+          >
             <img
               src={copy ? SVG.Check : SVG.Copy}
               alt="eye_close_icon"
@@ -129,7 +134,7 @@ function AccordianCard({ item }: { item: Pocket }) {
       {item.pocket_password && item.pocket_userName && (
         <>
           <div>
-            <small>Username</small>
+            <small className="dark:text-gray-300">Username</small>
 
             <div className="relative">
               <div className="absolute w-max inset-y-3 inset-x-2">
@@ -139,11 +144,12 @@ function AccordianCard({ item }: { item: Pocket }) {
                 type="text"
                 value={item.pocket_userName}
                 readOnly
-                className="py-5 border w-full rounded-lg px-10"
+                className="py-5 border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg px-10"
               />
               <div
                 className="absolute cursor-pointer w-max right-5 inset-y-3"
-                onClick={() => setCopy((prev) => !prev)}>
+                onClick={() => setCopy((prev) => !prev)}
+              >
                 <img
                   src={copy ? SVG.Check : SVG.Copy}
                   alt="eye_close_icon"
@@ -153,7 +159,7 @@ function AccordianCard({ item }: { item: Pocket }) {
             </div>
           </div>
           <div>
-            <small>Password</small>
+            <small className="dark:text-gray-300">Password</small>
             <div className="relative">
               <div className="absolute w-max inset-y-3 inset-x-2">
                 <img src={SVG.Lock} alt="lock_icon" className="w-5 h-5" />
@@ -162,11 +168,12 @@ function AccordianCard({ item }: { item: Pocket }) {
                 type={showPassword ? "text" : "password"}
                 value={item.pocket_password}
                 readOnly
-                className="py-5 border w-full rounded-lg px-10"
+                className="py-5 border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg px-10"
               />
               <div
                 className="absolute cursor-pointer w-max right-14 inset-y-3"
-                onClick={() => setShowPassword((prev) => !prev)}>
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
                 <img
                   src={showPassword ? SVG.EyeOpen : SVG.EyeClose}
                   alt="eye_close_icon"
@@ -175,7 +182,8 @@ function AccordianCard({ item }: { item: Pocket }) {
               </div>
               <div
                 className="absolute cursor-pointer w-max right-5 inset-y-3"
-                onClick={() => setCopy((prev) => !prev)}>
+                onClick={() => setCopy((prev) => !prev)}
+              >
                 <img
                   src={copy ? SVG.Check : SVG.Copy}
                   alt="eye_close_icon"

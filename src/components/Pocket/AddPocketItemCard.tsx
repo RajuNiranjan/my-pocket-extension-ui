@@ -45,14 +45,15 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
       <div className="w-full flex justify-end">
         <div
           onClick={() => setShowCard(false)}
-          className="h-7 w-7 cursor-pointer rounded-full flex justify-center items-center bg-gray-200 hover:bg-yellow-300">
+          className="h-7 w-7 cursor-pointer rounded-full flex justify-center items-center bg-gray-200 dark:bg-gray-700 hover:bg-yellow-300 dark:hover:bg-yellow-500"
+        >
           <img src={SVG.X} alt="" className="w-5 h-5" />
         </div>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2 ">
-          <label className="text-sm font-medium">Title</label>
+        <div className="space-y-2">
+          <label className="text-sm font-medium dark:text-white">Title</label>
 
           <div className="relative">
             <div className="absolute w-max inset-y-3 inset-x-2">
@@ -64,27 +65,32 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
               placeholder="Title"
               value={formData.title}
               onChange={handleInputChange}
-              className="py-5 border w-full rounded-lg px-10"
+              className="py-5 border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg px-10"
             />
           </div>
         </div>
 
         {!isPassword && (
           <div className="space-y-2">
-            <label className="text-sm font-medium">Description</label>
+            <label className="text-sm font-medium dark:text-white">
+              Description
+            </label>
             <Textarea
               name="description"
               placeholder="Description"
               value={formData.description}
               onChange={handleInputChange}
-              className="p-2 border w-full rounded-lg"></Textarea>
+              className="p-2 border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg"
+            ></Textarea>
           </div>
         )}
 
         {isPassword && (
           <div className="space-y-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">User Name</label>
+              <label className="text-sm font-medium dark:text-white">
+                User Name
+              </label>
 
               <div className="relative">
                 <div className="absolute w-max inset-y-3 inset-x-2">
@@ -96,12 +102,14 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
                   placeholder="User Name"
                   value={formData.pocket_userName}
                   onChange={handleInputChange}
-                  className="py-5 border w-full rounded-lg px-10"
+                  className="py-5 border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg px-10"
                 />
               </div>
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium">Password</label>
+              <label className="text-sm font-medium dark:text-white">
+                Password
+              </label>
 
               <div className="relative">
                 <div className="absolute w-max inset-y-3 inset-x-2">
@@ -113,7 +121,7 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
                   placeholder="Password"
                   value={formData.pocket_password}
                   onChange={handleInputChange}
-                  className="py-5 border w-full rounded-lg px-10"
+                  className="py-5 border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg px-10"
                 />
               </div>
             </div>
@@ -125,7 +133,8 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
           {/* Photo Button */}
           <Button
             type="button"
-            className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 hover:bg-yellow-300">
+            className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 dark:bg-gray-700 hover:bg-yellow-300 dark:hover:bg-yellow-500"
+          >
             <img src={SVG.Photo} alt="" className="w-5 h-5" />
           </Button>
 
@@ -134,20 +143,25 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
             type="button"
             onClick={() => setIsPassword(!isPassword)}
             className={`h-14 w-14 rounded-md flex justify-center items-center ${
-              isPassword ? "bg-yellow-300" : "bg-gray-200 hover:bg-yellow-300"
-            }`}>
+              isPassword
+                ? "bg-yellow-300 dark:bg-yellow-500"
+                : "bg-gray-200 dark:bg-gray-700 hover:bg-yellow-300 dark:hover:bg-yellow-500"
+            }`}
+          >
             <img src={SVG.Key} alt="" className="w-5 h-5" />
           </Button>
 
           <Button
             type="button"
-            className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 hover:bg-yellow-300">
+            className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 dark:bg-gray-700 hover:bg-yellow-300 dark:hover:bg-yellow-500"
+          >
             <img src={SVG.Clip} alt="" className="w-5 h-5" />
           </Button>
 
           <Button
             type="submit"
-            className="h-14 w-14 rounded-full flex justify-center items-center bg-yellow-300 hover:bg-yellow-400">
+            className="h-14 w-14 rounded-full flex justify-center items-center bg-yellow-300 dark:bg-yellow-500 hover:bg-yellow-400 dark:hover:bg-yellow-600"
+          >
             <img src={SVG.Send} alt="" className="w-5 h-5" />
           </Button>
         </div>

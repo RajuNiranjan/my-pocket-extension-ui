@@ -6,7 +6,7 @@ export const SearchPocketItem = () => {
       <Input
         type="text"
         placeholder="search..."
-        className="py-5 focus:outline-none  w-full rounded-lg"
+        className="py-5 border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg"
       />
     </div>
   );
