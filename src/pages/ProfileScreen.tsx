@@ -77,7 +77,7 @@ const ProfileScreen = () => {
             <img src={SVG.Light} alt="light mode" className="w-5 h-5" />
           )}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };
