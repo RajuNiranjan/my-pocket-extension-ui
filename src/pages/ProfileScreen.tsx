@@ -3,13 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { SVG } from "@/utils/svg";
 import { Input } from "@/components/ui/input";
-import { setTheme } from "@/store/features/them.slice";
 import { useEffect } from "react";
+import { toggleTheme } from "@/store/features/them.slice";
 
 const ProfileScreen = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
-  const { theme } = useSelector((state: RootState) => state.theme);
+
   const { logout } = useAuth();
+
+  const { theme } = useSelector((state: RootState) => state.theme);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -64,16 +66,15 @@ const ProfileScreen = () => {
           </div>
         </div>
       </div>
-
       <div>
         <button
-          className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 cursor-pointer transition-all duration-300"
-          onClick={() => dispatch(setTheme())}
+          className="w-10 h-10 bg-gray-800 dark:bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300 dark:hover:bg-gray-700 cursor-pointer transition-all duration-300"
+          onClick={() => dispatch(toggleTheme())}
         >
           {theme === "light" ? (
-            <img src={SVG.Light} className="w-5 h-5" />
+            <img src={SVG.Dark} alt="dark mode" className="w-5 h-5" />
           ) : (
-            <img src={SVG.Dark} className="w-5 h-5" />
+            <img src={SVG.Light} alt="light mode" className="w-5 h-5" />
           )}
         </button>
       </div>
