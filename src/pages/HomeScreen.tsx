@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PocketAddLaunchIcon from "../components/Pocket/PocketAddLaunchIcon";
 import AddPocketItemCard from "../components/Pocket/AddPocketItemCard";
 import { usePocket } from "../hooks/usePocket";
-import { PocketItemAccordian } from "@/components/Pocket/PocketItemAccordian";
+import { PocketItemAccordion } from "@/components/Pocket/PocketItemAccordian";
 import { SearchPocketItem } from "@/components/Pocket/SearchPocketItem";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
@@ -29,7 +29,7 @@ const HomeScreen = () => {
       ) : (
         <>
           <PocketAddLaunchIcon setShowCard={setShowCard} />
-          <PocketItemAccordian />
+          <PocketItemAccordion />
         </>
       )}
     </div>

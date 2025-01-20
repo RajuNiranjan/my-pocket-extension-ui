@@ -12,7 +12,7 @@ import { SVG } from "@/utils/svg";
 import { Textarea } from "../ui/textarea";
 import { usePocket } from "@/hooks/usePocket";
 
-export const PocketItemAccordian = () => {
+export const PocketItemAccordion = () => {
   const { pocketItem } = useSelector((state: RootState) => state.pocket);
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
   const [editMode, setEditMode] = useState<string | null>(null);
@@ -64,7 +64,7 @@ export const PocketItemAccordian = () => {
                     onClick={() => DeletePocketItem(item._id)}
                   />
                 </div>
-                <AccordianCard
+                <AccordionCard
                   item={item}
                   isEditing={editMode === `item-${idx}`}
                   onFinishEdit={() => setEditMode(null)}
@@ -111,7 +111,7 @@ function AccordionContentWithHeight({
   );
 }
 
-function AccordianCard({
+function AccordionCard({
   item,
   isEditing,
   onFinishEdit,
