@@ -28,6 +28,9 @@ import Logout from "../assets/logout.svg";
 import Dark from "../assets/dark.svg";
 import Light from "../assets/light.svg";
 import Download from "../assets/download.svg";
+import Chat from "../assets/chat.svg";
+import Group from "../assets/group.svg";
+
 export const SVG = {
   EyeOpen,
   EyeClose,
@@ -59,4 +62,6 @@ export const SVG = {
   Download,
   Dark,
   Light,
+  Chat,
+  Group,
 };
