@@ -246,7 +246,6 @@ function AccordionCard({
           </div>
         </>
       )}
-      {/* Move save button outside the conditional rendering */}
       {isEditing && (
         <div className="flex justify-end">
           <button
