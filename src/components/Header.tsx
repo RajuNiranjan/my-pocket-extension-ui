@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { LogoAnimation } from "./LogoAnimation";
 import { SVG } from "../utils/svg";
+import ThemeSwitch from "./ThemeSwitch";
 
 export const Header = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
@@ -25,6 +26,8 @@ export const Header = () => {
           alt="Logo"
           className="w-5 h-5 rounded-full cursor-pointer dark:invert"
         />
+        <ThemeSwitch />
+
         <NavLink to="/profile">
           <img
             src={authUser?.profilePic}

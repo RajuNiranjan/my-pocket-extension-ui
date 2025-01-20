@@ -1,16 +1,14 @@
 import { useAuth } from "../hooks/useAuth.hook";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { SVG } from "@/utils/svg";
 import { Input } from "@/components/ui/input";
 import { useEffect } from "react";
-import { toggleTheme } from "@/store/features/them.slice";
 
 const ProfileScreen = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
   const { logout } = useAuth();
   const { theme } = useSelector((state: RootState) => state.theme);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     document.documentElement.className = theme;
@@ -20,16 +18,14 @@ const ProfileScreen = () => {
     <div
       className={`${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"
-      }`}
-    >
+      }`}>
       <div className="flex justify-end items-center">
         <div
           className={`w-10 h-10 ${
             theme === "dark"
               ? "bg-gray-700 hover:bg-gray-600"
               : "bg-gray-200 hover:bg-gray-300"
-          } rounded-full flex items-center justify-center cursor-pointer transition-all duration-300`}
-        >
+          } rounded-full flex items-center justify-center cursor-pointer transition-all duration-300`}>
           <img
             onClick={() => logout()}
             src={SVG.Logout}
@@ -45,8 +41,7 @@ const ProfileScreen = () => {
           <div
             className={`w-20 h-20 border-2 ${
               theme === "dark" ? "border-white" : "border-black"
-            } rounded-full flex items-center justify-center`}
-          >
+            } rounded-full flex items-center justify-center`}>
             <img src={authUser?.profilePic} alt="user" />
           </div>
         </div>
@@ -96,22 +91,6 @@ const ProfileScreen = () => {
             />
           </div>
         </div>
-      </div>
-      <div>
-        <button
-          className={`w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 ${
-            theme === "dark"
-              ? "bg-gray-700 hover:bg-gray-600"
-              : "bg-gray-200 hover:bg-gray-300"
-          }`}
-          onClick={() => dispatch(toggleTheme())}
-        >
-          {theme === "light" ? (
-            <img src={SVG.Dark} alt="dark mode" className="w-5 h-5" />
-          ) : (
-            <img src={SVG.Light} alt="light mode" className="w-5 h-5 invert" />
-          )}
-        </button>
       </div>
     </div>
   );
