@@ -214,6 +214,29 @@ function AccordionCard({ item }: { item: Pocket }) {
           </div>
         </>
       )}
+      {item.images && item.images.length > 0 && (
+        <div>
+          <small className="dark:text-gray-300">Images</small>
+          <div className="flex flex-wrap gap-2">
+            {item.images.map((image, index) => (
+              <div key={index} className="relative">
+                <img src={image} alt="" className="w-24 h-24 rounded-md" />
+                <a
+                  href={image}
+                  download
+                  className="absolute -top-2 -right-2 w-7 h-7 bg-gray-700 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-600"
+                >
+                  <img
+                    src={SVG.Download}
+                    alt="download"
+                    className="w-5 h-5 invert"
+                  />
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

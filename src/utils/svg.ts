@@ -27,7 +27,7 @@ import Search from "../assets/search.svg";
 import Logout from "../assets/logout.svg";
 import Dark from "../assets/dark.svg";
 import Light from "../assets/light.svg";
-
+import Download from "../assets/download.svg";
 export const SVG = {
   EyeOpen,
   EyeClose,
@@ -56,6 +56,7 @@ export const SVG = {
   Search,
   Bin,
   Logout,
+  Download,
   Dark,
   Light,
 };

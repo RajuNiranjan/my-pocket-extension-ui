@@ -4,6 +4,7 @@ import { usePocket } from "../../hooks/usePocket";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import axios from "axios";
 
 interface AddPocketItemCardType {
   setShowCard: React.Dispatch<React.SetStateAction<boolean>>;
@@ -25,6 +26,7 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
     description: "",
     pocket_userName: "",
     pocket_password: "",
+    images: [] as string[],
   });
 
   const handleInputChange = (
@@ -34,6 +36,52 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files) {
+      const uploadedUrls: string[] = [];
+
+      for (const file of Array.from(files)) {
+        if (file.type.startsWith("image/")) {
+          const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
+          const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+          try {
+            const formData = new FormData();
+            formData.append("file", file);
+            formData.append("upload_preset", uploadPreset);
+
+            const response = await axios.post(
+              `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
+              formData
+            );
+
+            if (response.status === 200) {
+              const imageUrl = response.data.secure_url;
+              uploadedUrls.push(imageUrl);
+              console.log("Upload successful:", imageUrl);
+            }
+          } catch (error) {
+            console.error(`Failed to upload ${file.name}:`, error);
+          }
+        } else {
+          console.warn(`File ${file.name} is not an image and was skipped`);
+        }
+      }
+
+      setFormData((prev) => ({
+        ...prev,
+        images: [...prev.images, ...uploadedUrls],
+      }));
+    }
+  };
+
+  const handleRemoveImage = (indexToRemove: number) => {
+    setFormData((prev) => ({
+      ...prev,
+      images: prev.images.filter((_, index) => index !== indexToRemove),
+    }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     addPocketItem({ formData, setShowCard });
@@ -41,7 +89,6 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
 
   return (
     <div className="w-full h-full">
-      {/* Close Button */}
       <div className="w-full flex justify-end">
         <div
           onClick={() => setShowCard(false)}
@@ -140,13 +187,39 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
           </div>
         )}
 
+        <div className="flex flex-wrap gap-2">
+          {formData.images.map((image, index) => (
+            <div key={index} className="relative">
+              <img src={image} alt="" className="w-14 h-14 rounded-md" />
+              <div
+                onClick={() => handleRemoveImage(index)}
+                className="absolute -top-2 -right-2 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center cursor-pointer"
+              >
+                <img src={SVG.X} alt="remove" className="w-3 h-3 invert" />
+              </div>
+            </div>
+          ))}
+        </div>
+
         <div className="flex items-center gap-4">
-          <Button
-            type="button"
-            className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 dark:bg-gray-700 hover:bg-yellow-300 dark:hover:bg-yellow-500"
-          >
-            <img src={SVG.Photo} alt="" className="w-9 h-9 dark:invert" />
-          </Button>
+          <div>
+            <Button
+              type="button"
+              className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 dark:bg-gray-700 hover:bg-yellow-300 dark:hover:bg-yellow-500"
+              onClick={() => document.getElementById("imageUpload")?.click()}
+            >
+              <img src={SVG.Photo} alt="" className="w-9 h-9 dark:invert" />
+            </Button>
+
+            <Input
+              type="file"
+              id="imageUpload"
+              accept=".png"
+              multiple
+              className="hidden"
+              onChange={handleImageUpload}
+            />
+          </div>
 
           <Button
             type="button"
