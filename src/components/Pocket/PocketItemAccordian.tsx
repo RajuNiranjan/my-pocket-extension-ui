@@ -15,8 +15,6 @@ import { usePocket } from "@/hooks/usePocket";
 export const PocketItemAccordion = () => {
   const { pocketItem } = useSelector((state: RootState) => state.pocket);
   const [activeAccordion, setActiveAccordion] = useState<string | null>(null);
-  const [editMode, setEditMode] = useState<string | null>(null);
-
   const { DeletePocketItem } = usePocket();
 
   const handleAccordionChange = (value: string) => {
@@ -52,23 +50,13 @@ export const PocketItemAccordion = () => {
               >
                 <div className="flex justify-end items-center gap-4 my-2">
                   <img
-                    src={SVG.Edit}
-                    alt=""
-                    className="w-5 h-5 cursor-pointer dark:invert"
-                    onClick={() => setEditMode(`item-${idx}`)}
-                  />
-                  <img
                     src={SVG.Bin}
                     alt=""
                     className="w-5 h-5 cursor-pointer dark:invert"
                     onClick={() => DeletePocketItem(item._id)}
                   />
                 </div>
-                <AccordionCard
-                  item={item}
-                  isEditing={editMode === `item-${idx}`}
-                  onFinishEdit={() => setEditMode(null)}
-                />
+                <AccordionCard item={item} />
               </AccordionContentWithHeight>
             </AccordionItem>
           </Accordion>
@@ -111,34 +99,9 @@ function AccordionContentWithHeight({
   );
 }
 
-function AccordionCard({
-  item,
-  isEditing,
-  onFinishEdit,
-}: {
-  item: Pocket;
-  isEditing: boolean;
-  onFinishEdit: () => void;
-}) {
+function AccordionCard({ item }: { item: Pocket }) {
   const [showPassword, setShowPassword] = useState(false);
   const [copy, setCopy] = useState(false);
-  const [formData, setFormData] = useState({
-    description: item.description,
-    pocket_userName: item.pocket_userName,
-    pocket_password: item.pocket_password,
-  });
-
-  const handleChange = (field: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
-  };
-
-  const handleSave = () => {
-    console.log("Updated form data:", formData);
-    onFinishEdit();
-  };
 
   return (
     <div className="w-full space-y-4 pb-4">
@@ -146,23 +109,20 @@ function AccordionCard({
         <small className="dark:text-gray-300">Description</small>
         <div className="relative">
           <Textarea
-            value={formData.description}
-            readOnly={!isEditing}
-            onChange={(e) => handleChange("description", e.target.value)}
+            value={item.description}
+            readOnly
             className="border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg resize-none"
           />
-          {!isEditing && (
-            <div
-              className="absolute cursor-pointer w-max right-5 inset-y-3"
-              onClick={() => setCopy((prev) => !prev)}
-            >
-              <img
-                src={copy ? SVG.Check : SVG.Copy}
-                alt="eye_close_icon"
-                className="w-5 h-5 dark:invert"
-              />
-            </div>
-          )}
+          <div
+            className="absolute cursor-pointer w-max right-5 inset-y-3"
+            onClick={() => setCopy((prev) => !prev)}
+          >
+            <img
+              src={copy ? SVG.Check : SVG.Copy}
+              alt="eye_close_icon"
+              className="w-5 h-5 dark:invert"
+            />
+          </div>
         </div>
       </div>
 
@@ -180,25 +140,20 @@ function AccordionCard({
               </div>
               <Input
                 type="text"
-                value={formData.pocket_userName}
-                readOnly={!isEditing}
-                onChange={(e) =>
-                  handleChange("pocket_userName", e.target.value)
-                }
+                value={item.pocket_userName}
+                readOnly
                 className="py-5 border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg px-10"
               />
-              {!isEditing && (
-                <div
-                  className="absolute cursor-pointer w-max right-5 inset-y-3"
-                  onClick={() => setCopy((prev) => !prev)}
-                >
-                  <img
-                    src={copy ? SVG.Check : SVG.Copy}
-                    alt="eye_close_icon"
-                    className="w-5 h-5 dark:invert"
-                  />
-                </div>
-              )}
+              <div
+                className="absolute cursor-pointer w-max right-5 inset-y-3"
+                onClick={() => setCopy((prev) => !prev)}
+              >
+                <img
+                  src={copy ? SVG.Check : SVG.Copy}
+                  alt="eye_close_icon"
+                  className="w-5 h-5 dark:invert"
+                />
+              </div>
             </div>
           </div>
           <div>
@@ -213,11 +168,8 @@ function AccordionCard({
               </div>
               <Input
                 type={showPassword ? "text" : "password"}
-                value={formData.pocket_password}
-                readOnly={!isEditing}
-                onChange={(e) =>
-                  handleChange("pocket_password", e.target.value)
-                }
+                value={item.pocket_password}
+                readOnly
                 className="py-5 border dark:border-gray-700 dark:bg-gray-800 dark:text-white w-full rounded-lg px-10"
               />
               <div
@@ -230,31 +182,19 @@ function AccordionCard({
                   className="w-5 h-5 dark:invert"
                 />
               </div>
-              {!isEditing && (
-                <div
-                  className="absolute cursor-pointer w-max right-5 inset-y-3"
-                  onClick={() => setCopy((prev) => !prev)}
-                >
-                  <img
-                    src={copy ? SVG.Check : SVG.Copy}
-                    alt="eye_close_icon"
-                    className="w-5 h-5 dark:invert"
-                  />
-                </div>
-              )}
+              <div
+                className="absolute cursor-pointer w-max right-5 inset-y-3"
+                onClick={() => setCopy((prev) => !prev)}
+              >
+                <img
+                  src={copy ? SVG.Check : SVG.Copy}
+                  alt="eye_close_icon"
+                  className="w-5 h-5 dark:invert"
+                />
+              </div>
             </div>
           </div>
         </>
-      )}
-      {isEditing && (
-        <div className="flex justify-end">
-          <button
-            onClick={handleSave}
-            className="bg-yellow-300 hover:bg-yellow-400 dark:bg-yellow-600 dark:hover:bg-yellow-700 px-4 py-2 rounded-lg text-black dark:text-white"
-          >
-            Save
-          </button>
-        </div>
       )}
     </div>
   );
