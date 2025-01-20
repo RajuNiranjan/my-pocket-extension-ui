@@ -101,7 +101,19 @@ function AccordionContentWithHeight({
 
 function AccordionCard({ item }: { item: Pocket }) {
   const [showPassword, setShowPassword] = useState(false);
-  const [copy, setCopy] = useState(false);
+  const [copiedField, setCopiedField] = useState<string | null>(null);
+
+  const handleCopy = async (text: string, field: string) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      if (copiedField && copiedField !== field) {
+        setCopiedField(null);
+      }
+      setCopiedField(field);
+    } catch (err) {
+      console.error("Failed to copy text: ", err);
+    }
+  };
 
   return (
     <div className="w-full space-y-4 pb-4">
@@ -115,11 +127,13 @@ function AccordionCard({ item }: { item: Pocket }) {
           />
           <div
             className="absolute cursor-pointer w-max right-5 inset-y-3"
-            onClick={() => setCopy((prev) => !prev)}
+            onClick={() =>
+              handleCopy(item.description as string, "description")
+            }
           >
             <img
-              src={copy ? SVG.Check : SVG.Copy}
-              alt="eye_close_icon"
+              src={copiedField === "description" ? SVG.Check : SVG.Copy}
+              alt="copy_icon"
               className="w-5 h-5 dark:invert"
             />
           </div>
@@ -146,11 +160,13 @@ function AccordionCard({ item }: { item: Pocket }) {
               />
               <div
                 className="absolute cursor-pointer w-max right-5 inset-y-3"
-                onClick={() => setCopy((prev) => !prev)}
+                onClick={() =>
+                  handleCopy(item.pocket_userName || "", "username")
+                }
               >
                 <img
-                  src={copy ? SVG.Check : SVG.Copy}
-                  alt="eye_close_icon"
+                  src={copiedField === "username" ? SVG.Check : SVG.Copy}
+                  alt="copy_icon"
                   className="w-5 h-5 dark:invert"
                 />
               </div>
@@ -178,17 +194,19 @@ function AccordionCard({ item }: { item: Pocket }) {
               >
                 <img
                   src={showPassword ? SVG.EyeOpen : SVG.EyeClose}
-                  alt="eye_close_icon"
+                  alt="eye_icon"
                   className="w-5 h-5 dark:invert"
                 />
               </div>
               <div
                 className="absolute cursor-pointer w-max right-5 inset-y-3"
-                onClick={() => setCopy((prev) => !prev)}
+                onClick={() =>
+                  handleCopy(item.pocket_password || "", "password")
+                }
               >
                 <img
-                  src={copy ? SVG.Check : SVG.Copy}
-                  alt="eye_close_icon"
+                  src={copiedField === "password" ? SVG.Check : SVG.Copy}
+                  alt="copy_icon"
                   className="w-5 h-5 dark:invert"
                 />
               </div>
