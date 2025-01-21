@@ -90,17 +90,22 @@ export const usePocket = () => {
     pocketId: string;
     formData: AddPocketType;
   }) => {
+    console.log("formData", formData);
+    console.log("pocketId", pocketId);
     dispatch(pocketPending());
 
     try {
       const res = await axiosInstance.patch(`/pocket/${pocketId}`, formData, {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       dispatch(pocketFullFill(res.data));
       getPocketItems();
     } catch (error) {
+      console.log("error", error);
       dispatch(pocketReject(error as string));
-      console.error("Error adding pocket item:", error);
+      console.error("Error updating pocket item:", error);
     }
   };
 
