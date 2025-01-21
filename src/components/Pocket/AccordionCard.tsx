@@ -3,11 +3,12 @@ import { SVG } from "@/utils/svg";
 import { useState } from "react";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import { usePocket } from "@/hooks/usePocket";
 
 export const AccordionCard = ({ item }: { item: Pocket }) => {
   const [showPassword, setShowPassword] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
-
+  const { DeletePocketItem } = usePocket();
   const handleCopy = async (text: string, field: string) => {
     try {
       await navigator.clipboard.writeText(text);
@@ -20,8 +21,21 @@ export const AccordionCard = ({ item }: { item: Pocket }) => {
     }
   };
 
+  const handleDelete = (id: string) => {
+    DeletePocketItem(id);
+  };
+
   return (
     <div className="w-full space-y-4 pb-4">
+      <div className="flex justify-end gap-2">
+        <img src={SVG.Edit} alt="" className="w-5 h-5 dark:invert" />
+        <img
+          src={SVG.Bin}
+          alt=""
+          className="w-5 h-5 dark:invert cursor-pointer"
+          onClick={() => handleDelete(item._id)}
+        />
+      </div>
       {item.description && (
         <div>
           <small className="dark:text-gray-300">Description</small>

@@ -16,6 +16,7 @@ export const PocketAccordion = () => {
     <div className="bg-white dark:bg-gray-900  rounded-lg shadow-sm">
       <Accordion type="single" collapsible className="space-y-2">
         {pocketItem &&
+          Array.isArray(pocketItem) &&
           pocketItem.map((item: Pocket, idx: number) => (
             <AccordionItem
               key={idx}
