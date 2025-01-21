@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import PocketAddLaunchIcon from "../components/Pocket/PocketAddLaunchIcon";
 import AddPocketItemCard from "../components/Pocket/AddPocketItemCard";
 import { usePocket } from "../hooks/usePocket";
-import { PocketItemAccordion } from "@/components/Pocket/PocketItemAccordian";
 import { SearchPocketItem } from "@/components/Pocket/SearchPocketItem";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
+import { PocketAccordion } from "@/components/Pocket/Accordion/PocketAccordion";
 
 const HomeScreen = () => {
   const [showCard, setShowCard] = useState(false);
@@ -29,7 +29,7 @@ const HomeScreen = () => {
       ) : (
         <>
           <PocketAddLaunchIcon setShowCard={setShowCard} />
-          <PocketItemAccordion />
+          <PocketAccordion />
         </>
       )}
     </div>
