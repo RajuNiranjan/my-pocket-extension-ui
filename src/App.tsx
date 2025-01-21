@@ -11,6 +11,7 @@ import { fetchUser } from "./store/features/auth.slice";
 import { useEffect } from "react";
 import { LogoAnimation } from "./components/LogoAnimation";
 import MessageScree from "./pages/MessageScree";
+import ChatsScreen from "./pages/ChatsScreen";
 
 const App = () => {
   const { authUser, isAuthLoading } = useSelector(
@@ -39,7 +40,8 @@ const App = () => {
             <>
               <Route path="/" element={<HomeScreen />} />
               <Route path="/profile" element={<ProfileScreen />} />
-              <Route path="/messages" element={<MessageScree />} />
+              <Route path="/chats" element={<ChatsScreen />} />
+              <Route path="/messages/:id" element={<MessageScree />} />
               <Route path="*" element={<Navigate to="/" />} />
             </>
           ) : (

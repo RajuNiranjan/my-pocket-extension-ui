@@ -14,7 +14,7 @@ export const Header = () => {
         <LogoAnimation />
       </div>
       <div className="flex items-center gap-4">
-        <NavLink to="/messages">
+        <NavLink to="/chats">
           <img
             src={SVG.Message}
             alt="Logo"

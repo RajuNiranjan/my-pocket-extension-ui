@@ -1,10 +1,14 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { Link } from "react-router-dom";
 
 export const MessageCard = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
   return (
-    <div className="w-full h-14 border dark:border-gray-700 rounded-lg p-2 flex justify-between items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300">
+    <Link
+      to={`/messages/${authUser?._id}`}
+      className="w-full h-14 border dark:border-gray-700 rounded-lg p-2 flex justify-between items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+    >
       <div className="flex items-center gap-2">
         <div className="">
           <img
@@ -25,6 +29,6 @@ export const MessageCard = () => {
           2
         </small>
       </div>
-    </div>
+    </Link>
   );
 };
