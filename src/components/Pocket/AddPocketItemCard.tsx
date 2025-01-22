@@ -106,7 +106,7 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
               <img
                 src={SVG.Tag}
                 alt="lock_icon"
-                className="w-5 h-5 dark:invert"
+                className="w-5 h-5 dark:invert "
               />
             </div>
             <Input

@@ -33,26 +33,28 @@ const App = () => {
 
   return (
     <div className="min-h-screen  flex justify-center items-center w-full">
-      <div className="w-[450px] h-full min-h-[850px] dark:bg-gray-900 dark:text-white  border">
+      <div className="w-[450px] h-full min-h-[850px] dark:bg-gray-900 dark:text-white  transition-all duration-300  border">
         {authUser && <Header />}
-        <Routes>
-          {authUser ? (
-            <>
-              <Route path="/" element={<HomeScreen />} />
-              <Route path="/profile" element={<ProfileScreen />} />
-              <Route path="/chats" element={<ChatsScreen />} />
-              <Route path="/messages/:id" element={<MessageScree />} />
-              <Route path="*" element={<Navigate to="/" />} />
-            </>
-          ) : (
-            <>
-              <Route path="/welcome" element={<WelcomeScreen />} />
-              <Route path="/login" element={<LogInScreen />} />
-              <Route path="/signup" element={<SignUpScreen />} />
-            </>
-          )}
-          <Route path="*" element={<Navigate to="/welcome" />} />
-        </Routes>
+        <div className="p-2">
+          <Routes>
+            {authUser ? (
+              <>
+                <Route path="/" element={<HomeScreen />} />
+                <Route path="/profile" element={<ProfileScreen />} />
+                <Route path="/chats" element={<ChatsScreen />} />
+                <Route path="/messages/:id" element={<MessageScree />} />
+                <Route path="*" element={<Navigate to="/" />} />
+              </>
+            ) : (
+              <>
+                <Route path="/welcome" element={<WelcomeScreen />} />
+                <Route path="/login" element={<LogInScreen />} />
+                <Route path="/signup" element={<SignUpScreen />} />
+              </>
+            )}
+            <Route path="*" element={<Navigate to="/welcome" />} />
+          </Routes>
+        </div>
       </div>
     </div>
   );
