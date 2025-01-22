@@ -95,7 +95,7 @@ export const usePocket = () => {
     dispatch(pocketPending());
 
     try {
-      const res = await axiosInstance.patch(`/pocket/${pocketId}`, formData, {
+      const res = await axiosInstance.put(`/pocket/${pocketId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
