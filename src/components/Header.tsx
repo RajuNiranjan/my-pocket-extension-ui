@@ -4,6 +4,7 @@ import { RootState } from "../store/store";
 import { LogoAnimation } from "./LogoAnimation";
 import { SVG } from "../utils/svg";
 import ThemeSwitch from "./ThemeSwitch";
+import { NotificationsMenu } from "./NotificationsMenu/NotificationsMenu";
 
 export const Header = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
@@ -13,7 +14,7 @@ export const Header = () => {
       <div>
         <LogoAnimation />
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center  gap-4">
         <NavLink to="/chats">
           <img
             src={SVG.Message}
@@ -21,11 +22,9 @@ export const Header = () => {
             className="w-5 h-5 rounded-full cursor-pointer dark:invert"
           />
         </NavLink>
-        <img
-          src={SVG.Bell}
-          alt="Logo"
-          className="w-5 h-5 rounded-full cursor-pointer dark:invert"
-        />
+
+        <NotificationsMenu />
+
         <ThemeSwitch />
 
         <NavLink to="/profile">
