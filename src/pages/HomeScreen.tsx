@@ -17,7 +17,7 @@ const HomeScreen = () => {
   }, []);
   return (
     <div
-      className={`overflow-y-auto space-y-4 p-2 ${
+      className={`overflow-y-auto space-y-4 p-2 relative ${
         theme === "dark" ? "bg-gray-900 text-white" : "bg-white text-black"
       }`}
     >
@@ -28,7 +28,10 @@ const HomeScreen = () => {
         </>
       ) : (
         <>
-          <PocketAddLaunchIcon setShowCard={setShowCard} />
+          <div className="fixed bottom-10 right-10">
+            <PocketAddLaunchIcon setShowCard={setShowCard} />
+          </div>
+
           <PocketAccordion />
         </>
       )}
