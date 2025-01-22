@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { LogoAnimation } from "./LogoAnimation";
 import { SVG } from "../utils/svg";
-import ThemeSwitch from "./ThemeSwitch";
+import ThemeSwitch from "./ThemeControllers/ThemeSwitch";
 import { NotificationsMenu } from "./NotificationsMenu/NotificationsMenu";
 
 export const Header = () => {
