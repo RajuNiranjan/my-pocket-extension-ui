@@ -10,7 +10,7 @@ export const Header = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
 
   return (
-    <nav className="h-10 mb-4 sticky top-0 z-50 flex justify-between items-center bg-white dark:bg-gray-900">
+    <nav className="h-14 mb-4 sticky top-0 z-50 flex justify-between items-center backdrop-blur-md p-4">
       <div>
         <LogoAnimation />
       </div>
