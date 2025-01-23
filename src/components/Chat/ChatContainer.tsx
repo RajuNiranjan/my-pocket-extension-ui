@@ -1,4 +1,3 @@
-import React from "react";
 import { Card } from "../ui/card";
 import { cn } from "@/lib/utils";
 
@@ -60,14 +59,12 @@ export const ChatContainer = () => {
               className={cn(
                 "flex",
                 message.isMe ? "justify-end" : "justify-start"
-              )}
-            >
+              )}>
               <div
                 className={cn(
                   "flex max-w-[75%] flex-col gap-1",
                   message.isMe && "items-end"
-                )}
-              >
+                )}>
                 <div className="flex items-center gap-2">
                   {!message.isMe && (
                     <span className="text-sm font-medium">
@@ -84,8 +81,7 @@ export const ChatContainer = () => {
                     message.isMe
                       ? "bg-primary text-primary-foreground"
                       : "bg-muted"
-                  )}
-                >
+                  )}>
                   {message.content}
                 </Card>
               </div>
