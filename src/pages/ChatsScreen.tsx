@@ -1,5 +1,5 @@
 import { SVG } from "@/utils/svg";
-import { MessageCard } from "../components/Chat/MessageCard";
+import { ChatCard } from "../components/Chat/ChatCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ChatsScreen = () => {
@@ -24,7 +24,7 @@ const ChatsScreen = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value="chats" className="dark:bg-gray-900">
-          <MessageCard />
+          <ChatCard />
         </TabsContent>
         <TabsContent value="groups" className="dark:bg-gray-900">
           Groups Will comes here

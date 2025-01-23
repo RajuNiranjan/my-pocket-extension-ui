@@ -1,7 +1,13 @@
+import { ChatContainer } from "@/components/Chat/ChatContainer";
+import { ChatHeader } from "@/components/Chat/ChatHeader";
+import MessageInput from "@/components/Chat/MessageInput";
+
 const MessageScree = () => {
   return (
     <div>
-      <h1>MessageScree</h1>
+      <ChatHeader />
+      <ChatContainer />
+      <MessageInput />
     </div>
   );
 };

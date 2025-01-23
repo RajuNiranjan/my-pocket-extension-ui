@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { Link } from "react-router-dom";
 
-export const MessageCard = () => {
+export const ChatCard = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
   return (
     <Link
