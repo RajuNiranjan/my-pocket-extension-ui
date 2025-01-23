@@ -1,8 +1,16 @@
 import { SVG } from "@/utils/svg";
 import { ChatCard } from "../components/Chat/ChatCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useEffect } from "react";
+import { useMessage } from "@/hooks/useMessage";
 
 const ChatsScreen = () => {
+  const { GetAllUsers } = useMessage();
+
+  useEffect(() => {
+    GetAllUsers();
+  }, []);
+
   return (
     <div className="space-y-1 overflow-y-auto">
       <Tabs defaultValue="chats" className="w-full">
