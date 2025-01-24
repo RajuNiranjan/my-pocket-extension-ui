@@ -2,13 +2,15 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Send } from "lucide-react";
 import { FormEvent, useState } from "react";
+import { useMessage } from "@/hooks/useMessage";
 
 const MessageInput = () => {
   const [message, setMessage] = useState("");
+  const { SendMessage } = useMessage();
 
   const handleSendMessage = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("message", message);
+    SendMessage(message, setMessage);
   };
 
   return (

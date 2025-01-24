@@ -44,6 +44,28 @@ export const useMessage = () => {
         }
     }
 
+    const SendMessage = async (message: string, setMessage: any) => {
+        dispatch(messagesPending())
+        try {
 
-    return { GetAllUsers, GetConversation }
+            const res = await axiosInstance.post(`messages/${selectedUser}`, { message }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+
+            console.log(res.data);
+            setMessage('')
+            GetConversation()
+
+
+        } catch (error) {
+            console.log(error);
+            dispatch(messagesReject())
+
+        }
+    }
+
+
+    return { GetAllUsers, GetConversation, SendMessage }
 }
