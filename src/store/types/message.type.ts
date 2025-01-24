@@ -10,7 +10,7 @@ export interface Message {
 
 
 export interface MessageTypes {
-    selectedUser: null | string
+    selectedUser: User | null
     allUsers: User[]
     messages: Message[]
     isUsersLoading: boolean

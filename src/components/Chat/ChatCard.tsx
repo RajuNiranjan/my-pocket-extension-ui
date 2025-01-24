@@ -1,9 +1,11 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { Link } from "react-router-dom";
+import { setSelectedUser } from "@/store/features/message.slice";
 
 export const ChatCard = () => {
   const { allUsers } = useSelector((state: RootState) => state.message);
+  const dispatch = useDispatch();
 
   return (
     <div className="flex flex-col gap-2">
@@ -12,6 +14,7 @@ export const ChatCard = () => {
           key={idx}
           to={`/messages/${user?._id}`}
           className="w-full h-14 border dark:border-gray-700 rounded-lg p-2 flex justify-between items-center cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
+          onClick={() => dispatch(setSelectedUser(user))}
         >
           <div className="flex items-center gap-2">
             <div className="">

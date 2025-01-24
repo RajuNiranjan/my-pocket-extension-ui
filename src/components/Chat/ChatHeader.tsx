@@ -4,13 +4,13 @@ import { SVG } from "@/utils/svg";
 import { useSelector } from "react-redux";
 
 export const ChatHeader = () => {
-  const { authUser } = useSelector((state: RootState) => state.auth);
+  const { selectedUser } = useSelector((state: RootState) => state.message);
   return (
     <div className="flex items-center justify-between">
       <div className="flex items-center gap-2">
-        <img src={authUser?.profilePic} alt="" className="w-10 h-10" />
+        <img src={selectedUser?.profilePic} alt="" className="w-10 h-10" />
         <div>
-          <h1>{authUser?.userName}</h1>
+          <h1>{selectedUser?.userName}</h1>
         </div>
       </div>
       <div>

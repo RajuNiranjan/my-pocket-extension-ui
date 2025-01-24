@@ -35,7 +35,7 @@ const messageSlice = createSlice({
       state.isUsersLoading = false;
       state.allUsers = action.payload;
     },
-    setSelectedUser: (state, action: PayloadAction<string>) => {
+    setSelectedUser: (state, action: PayloadAction<User>) => {
       state.selectedUser = action.payload;
     },
   },

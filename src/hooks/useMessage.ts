@@ -6,6 +6,7 @@ export const useMessage = () => {
     const dispatch = useDispatch()
     const token = localStorage.getItem("pocket");
     const { selectedUser } = useSelector((state: RootState) => state.message)
+    console.log("selected user", selectedUser);
 
     const GetAllUsers = async () => {
         dispatch(usersPending())
@@ -28,7 +29,7 @@ export const useMessage = () => {
         dispatch(messagesPending())
         try {
 
-            const res = await axiosInstance.get(`/messages/${selectedUser}`, {
+            const res = await axiosInstance.get(`/messages/${selectedUser?._id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -48,7 +49,7 @@ export const useMessage = () => {
         dispatch(messagesPending())
         try {
 
-            const res = await axiosInstance.post(`messages/${selectedUser}`, { message }, {
+            const res = await axiosInstance.post(`messages/${selectedUser?._id}`, { message }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
