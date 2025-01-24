@@ -1,12 +1,22 @@
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { Send } from "lucide-react";
+import { FormEvent, useState } from "react";
 
 const MessageInput = () => {
+  const [message, setMessage] = useState("");
+
+  const handleSendMessage = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("message", message);
+  };
+
   return (
     <div className="border-t p-4">
-      <form className="flex gap-2">
+      <form onSubmit={handleSendMessage} className="flex gap-2">
         <Input
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
           placeholder="Type a message..."
           className="min-h-[2.5rem] max-h-32 border-gray-100 resize-none"
         />

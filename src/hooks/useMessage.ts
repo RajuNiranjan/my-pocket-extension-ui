@@ -1,9 +1,11 @@
 import { axiosInstance } from "@/utils/axios";
-import { usersPending, usersReject, usersFullFill } from '@/store/features/message.slice'
-import { useDispatch } from "react-redux";
+import { usersPending, usersReject, usersFullFill, messagesReject, messagesPending, messageFullFill } from '@/store/features/message.slice'
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 export const useMessage = () => {
     const dispatch = useDispatch()
     const token = localStorage.getItem("pocket");
+    const { selectedUser } = useSelector((state: RootState) => state.message)
 
     const GetAllUsers = async () => {
         dispatch(usersPending())
@@ -22,6 +24,26 @@ export const useMessage = () => {
         }
     }
 
+    const GetConversation = async () => {
+        dispatch(messagesPending())
+        try {
 
-    return { GetAllUsers }
+            const res = await axiosInstance.get(`/messages/${selectedUser}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+
+            dispatch(messageFullFill(res.data))
+            console.log("conversations---data", res.data);
+
+        } catch (error) {
+            console.log(error);
+            dispatch(messagesReject())
+
+        }
+    }
+
+
+    return { GetAllUsers, GetConversation }
 }

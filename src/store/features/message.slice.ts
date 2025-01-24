@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { MessageTypes } from "../types/message.type";
+import { Message, MessageTypes } from "../types/message.type";
 import { User } from "../types/auth.type";
 
 const initialState: MessageTypes = {
   selectedUser: null,
   allUsers: [],
+  messages: [],
   isMessagesLoading: false,
   isUsersLoading: false,
 };
@@ -13,17 +14,22 @@ const messageSlice = createSlice({
   name: "message",
   initialState,
   reducers: {
-    usersPending: (state) => {
-      state.isUsersLoading = true;
-    },
+
     messagesPending: (state) => {
       state.isMessagesLoading = true;
     },
-    usersReject: (state) => {
-      state.isUsersLoading = false;
+    messageFullFill: (state, action: PayloadAction<Message[]>) => {
+      state.isMessagesLoading = false;
+      state.messages = action.payload
     },
     messagesReject: (state) => {
       state.isMessagesLoading = false;
+    },
+    usersPending: (state) => {
+      state.isUsersLoading = true;
+    },
+    usersReject: (state) => {
+      state.isUsersLoading = false;
     },
     usersFullFill: (state, action: PayloadAction<User[]>) => {
       state.isUsersLoading = false;
@@ -41,6 +47,7 @@ export const {
   usersPending,
   usersReject,
   usersFullFill,
+  messageFullFill,
   setSelectedUser,
 } = messageSlice.actions;
 
