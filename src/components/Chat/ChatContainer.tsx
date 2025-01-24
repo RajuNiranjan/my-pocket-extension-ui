@@ -4,8 +4,12 @@ import { cn } from "@/lib/utils";
 import { RootState } from "@/store/store";
 
 export const ChatContainer = () => {
-  const { messages } = useSelector((state: RootState) => state.message);
+  const { messages, selectedUser } = useSelector(
+    (state: RootState) => state.message
+  );
+
   const { authUser } = useSelector((state: RootState) => state.auth);
+
   return (
     <div>
       <div className="flex-1 p-4">
@@ -27,7 +31,7 @@ export const ChatContainer = () => {
                   <div className="flex items-center gap-2">
                     {!isMe && (
                       <span className="text-sm font-medium">
-                        {message.senderId}
+                        {selectedUser?.userName}
                       </span>
                     )}
                     <span className="text-xs text-muted-foreground">
