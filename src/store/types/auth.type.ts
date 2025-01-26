@@ -3,6 +3,8 @@ export interface User {
   userName: string;
   email: string;
   profilePic: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface UserType {
