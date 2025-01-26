@@ -1,21 +1,12 @@
-import { ChatContainer } from "@/components/Chat/ChatContainer";
-import { ChatHeader } from "@/components/Chat/ChatHeader";
-import MessageInput from "@/components/Chat/MessageInput";
-import { useMessage } from "@/hooks/useMessage";
-import { useEffect } from "react";
+import { ChatUserHeader } from "@/components/Msg/ChatUserHeader";
 
 const MessageScree = () => {
-  const { GetConversation } = useMessage();
-
-  useEffect(() => {
-    GetConversation();
-  }, []);
-
   return (
     <div>
-      <ChatHeader />
+      <ChatUserHeader />
+      {/* <ChatHeader />
       <ChatContainer />
-      <MessageInput />
+      <MessageInput /> */}
     </div>
   );
 };

@@ -2,13 +2,10 @@ import { SVG } from "@/utils/svg";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useEffect } from "react";
-import { useMessage } from "@/hooks/useMessage";
 import { ChatUserCard } from "@/components/Msg/ChatUserCard";
 import { useMsg } from "@/hooks/userMsg";
 
 const ChatsScreen = () => {
-  const { GetAllUsers } = useMessage();
-
   const { GetChatUsers } = useMsg();
 
   useEffect(() => {

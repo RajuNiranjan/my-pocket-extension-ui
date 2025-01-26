@@ -24,7 +24,6 @@ export const useMsg = () => {
         },
       });
       dispatch(usersFullFill(res.data));
-      console.log("chat-Usrs", res.data);
     } catch (error) {
       console.log(error);
       dispatch(usersReject());

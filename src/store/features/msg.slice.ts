@@ -5,7 +5,7 @@ import { User } from "../types/auth.type";
 const initialState: MsgType = {
   chatUsers: [],
   messages: [],
-  selectedUserId: null,
+  selectedUser: null,
   isChatUsersLoading: false,
   isConversationLoading: false,
 };
@@ -34,6 +34,9 @@ const msgSlice = createSlice({
     chatReject: (state) => {
       state.isConversationLoading = false;
     },
+    setSelectedUser: (state, action: PayloadAction<User>) => {
+      state.selectedUser = action.payload;
+    },
   },
 });
 
@@ -44,6 +47,7 @@ export const {
   chatReject,
   usersPending,
   usersReject,
+  setSelectedUser,
 } = msgSlice.actions;
 
 export default msgSlice.reducer;

@@ -11,7 +11,7 @@ export interface Msg {
 export interface MsgType {
   messages: Msg[];
   chatUsers: User[];
-  selectedUserId: string | null;
+  selectedUser: User | null;
   isConversationLoading: boolean;
   isChatUsersLoading: boolean;
 }
