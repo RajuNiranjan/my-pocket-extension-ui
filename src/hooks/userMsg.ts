@@ -9,13 +9,14 @@ import {
   usersReject,
 } from "../store/features/msg.slice";
 import { axiosInstance } from "@/utils/axios";
+import { useCallback } from "react";
 
 export const useMsg = () => {
   const dispatch = useDispatch();
   const token = localStorage.getItem("pocket");
-  const { authUser } = useSelector((state: RootState) => state.auth);
+  const { selectedUser } = useSelector((state: RootState) => state.msg);
 
-  const GetChatUsers = async () => {
+  const GetChatUsers = useCallback(async () => {
     dispatch(usersPending());
     try {
       const res = await axiosInstance.get(`/msg/users`, {
@@ -28,7 +29,23 @@ export const useMsg = () => {
       console.log(error);
       dispatch(usersReject());
     }
-  };
+  }, [dispatch, token]);
 
-  return { GetChatUsers };
+  const GetConversations = useCallback(async () => {
+    dispatch(chatPending());
+    try {
+      const res = await axiosInstance.get(`/msg/${selectedUser?._id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      dispatch(chatFullFill(res.data));
+      console.log("conversations", res.data);
+    } catch (error) {
+      dispatch(chatReject());
+      console.log(error);
+    }
+  }, [dispatch, selectedUser, token]);
+
+  return { GetChatUsers, GetConversations };
 };

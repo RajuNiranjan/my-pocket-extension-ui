@@ -7,13 +7,19 @@ import {
 import { AppDispatch, RootState } from "../store/store";
 import { axiosInstance } from "../utils/axios";
 import { AddPocketType } from "../components/Pocket/AddPocketItemCard";
+import { useCallback } from "react";
 
 export const usePocket = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { authUser } = useSelector((state: RootState) => state.auth);
   const token = localStorage.getItem("pocket");
 
-  const getPocketItems = async () => {
+  const getPocketItems = useCallback(async () => {
+    if (!token) {
+      console.error("Authorization token is missing.");
+      return;
+    }
+
     dispatch(pocketPending());
     try {
       const res = await axiosInstance.get("/pocket", {
@@ -24,90 +30,115 @@ export const usePocket = () => {
       });
       dispatch(pocketFullFill(res.data));
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching pocket items:", error);
       dispatch(pocketReject(error as string));
     }
-  };
+  }, [dispatch, token]);
 
-  const addPocketItem = async ({
-    formData,
-    setShowCard,
-  }: {
-    formData: AddPocketType;
-    setShowCard: React.Dispatch<React.SetStateAction<boolean>>;
-  }) => {
-    if (!authUser || !authUser._id) {
-      console.error("Auth user or user ID is missing.");
-      return;
-    }
+  const addPocketItem = useCallback(
+    async ({
+      formData,
+      setShowCard,
+    }: {
+      formData: AddPocketType;
+      setShowCard: React.Dispatch<React.SetStateAction<boolean>>;
+    }) => {
+      if (!authUser || !authUser._id) {
+        console.error("Auth user or user ID is missing.");
+        return;
+      }
 
-    if (!token) {
-      console.error("Authorization token is missing.");
-      return;
-    }
+      if (!token) {
+        console.error("Authorization token is missing.");
+        return;
+      }
 
-    try {
+      try {
+        dispatch(pocketPending());
+        const res = await axiosInstance.post(
+          `/pocket/${authUser._id}`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        dispatch(pocketFullFill(res.data));
+
+        await getPocketItems();
+
+        setShowCard(false);
+      } catch (error) {
+        console.error("Error adding pocket item:", error);
+        dispatch(pocketReject(error as string));
+      }
+    },
+    [authUser, token, dispatch, getPocketItems]
+  );
+
+  const DeletePocketItem = useCallback(
+    async (pocketId: string) => {
+      if (!token) {
+        console.error("Authorization token is missing.");
+        return;
+      }
+
       dispatch(pocketPending());
-      const res = await axiosInstance.post(
-        `/pocket/${authUser._id}`,
-        formData,
-        {
+      try {
+        const res = await axiosInstance.delete(`/pocket/${pocketId}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+
+        dispatch(pocketFullFill(res.data));
+
+        await getPocketItems();
+      } catch (error) {
+        console.error("Error deleting pocket item:", error);
+        dispatch(pocketReject(error as string));
+      }
+    },
+    [dispatch, token, getPocketItems]
+  );
+
+  const UpdatePocketItem = useCallback(
+    async ({
+      pocketId,
+      formData,
+    }: {
+      pocketId: string;
+      formData: AddPocketType;
+    }) => {
+      if (!token) {
+        console.error("Authorization token is missing.");
+        return;
+      }
+
+      dispatch(pocketPending());
+      try {
+        const res = await axiosInstance.put(`/pocket/${pocketId}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
           },
-        }
-      );
+        });
 
-      dispatch(pocketFullFill(res.data));
-      getPocketItems();
-      setShowCard(false);
-    } catch (error) {
-      dispatch(pocketReject(error as string));
-      console.error("Error adding pocket item:", error);
-    }
+        dispatch(pocketFullFill(res.data));
+
+        await getPocketItems();
+      } catch (error) {
+        console.error("Error updating pocket item:", error);
+        dispatch(pocketReject(error as string));
+      }
+    },
+    [dispatch, token, getPocketItems]
+  );
+
+  return {
+    addPocketItem,
+    getPocketItems,
+    DeletePocketItem,
+    UpdatePocketItem,
   };
-
-  const DeletePocketItem = async (pocketId: string) => {
-    dispatch(pocketPending());
-
-    try {
-      const res = await axiosInstance.delete(`/pocket/${pocketId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      dispatch(pocketFullFill(res.data));
-      getPocketItems();
-    } catch (error) {
-      dispatch(pocketReject(error as string));
-      console.error("Error adding pocket item:", error);
-    }
-  };
-
-  const UpdatePocketItem = async ({
-    pocketId,
-    formData,
-  }: {
-    pocketId: string;
-    formData: AddPocketType;
-  }) => {
-    console.log("formData", formData);
-    console.log("pocketId", pocketId);
-    dispatch(pocketPending());
-
-    try {
-      const res = await axiosInstance.put(`/pocket/${pocketId}`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      dispatch(pocketFullFill(res.data));
-      getPocketItems();
-    } catch (error) {
-      console.log("error", error);
-      dispatch(pocketReject(error as string));
-      console.error("Error updating pocket item:", error);
-    }
-  };
-
-  return { addPocketItem, getPocketItems, DeletePocketItem, UpdatePocketItem };
 };

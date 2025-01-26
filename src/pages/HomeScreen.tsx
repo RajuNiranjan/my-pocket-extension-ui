@@ -14,7 +14,7 @@ const HomeScreen = () => {
 
   useEffect(() => {
     getPocketItems();
-  }, []);
+  }, [getPocketItems]);
   return (
     <div
       className={`overflow-y-auto space-y-4 p-2 relative  ${
