@@ -18,13 +18,20 @@ export const ChatConversationContainer = () => {
               <div className="max-w-[80%]">
                 <div
                   className={`
-                  w-full rounded-xl p-2 text-sm font-normal 
-                  ${isMe ? "bg-primary text-primary-foreground" : "bg-muted"}
+                  w-full rounded-t-xl  p-2 text-sm font-normal 
+                  ${
+                    isMe
+                      ? "bg-primary text-primary-foreground rounded-l-xl"
+                      : "bg-muted rounded-r-xl"
+                  }
                 `}>
                   <p className="break-words">{msg.message}</p>
                 </div>
                 {msg.createdAt && (
-                  <p className="text-[10px] mt-1 opacity-70 flex justify-end">
+                  <p
+                    className={`text-[10px] mt-1 opacity-70 flex ${
+                      isMe ? "justify-end" : "justify-start"
+                    }`}>
                     {new Date(msg.createdAt).toLocaleTimeString([], {
                       hour: "2-digit",
                       minute: "2-digit",
