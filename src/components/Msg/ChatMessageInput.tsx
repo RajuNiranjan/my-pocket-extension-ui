@@ -2,9 +2,12 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Send } from "lucide-react";
+import { useMsg } from "@/hooks/userMsg";
 
 export const ChatMessageInput = () => {
   const [formData, setFormData] = useState("");
+
+  const { SentMsg } = useMsg();
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData(e.target.value);
@@ -16,8 +19,7 @@ export const ChatMessageInput = () => {
       alert("Message cannot be empty");
       return;
     }
-    console.log(formData);
-    setFormData("");
+    SentMsg(formData, setFormData);
   };
 
   return (

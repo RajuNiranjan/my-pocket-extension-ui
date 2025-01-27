@@ -47,5 +47,29 @@ export const useMsg = () => {
     }
   }, [dispatch, selectedUser, token]);
 
-  return { GetChatUsers, GetConversations };
+  const SentMsg = useCallback(
+    async (
+      message: string,
+      setFormData: React.Dispatch<React.SetStateAction<string>>
+    ) => {
+      try {
+        await axiosInstance.post(
+          `/msg/${selectedUser?._id}`,
+          { message },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        GetConversations();
+        setFormData("");
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [selectedUser, token, GetConversations]
+  );
+
+  return { GetChatUsers, GetConversations, SentMsg };
 };
