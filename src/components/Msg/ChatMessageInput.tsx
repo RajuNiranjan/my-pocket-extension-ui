@@ -2,12 +2,11 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Send } from "lucide-react";
-import { useMsg } from "@/hooks/userMsg";
+import { useSocket } from "@/hooks/useSocket";
 
 export const ChatMessageInput = () => {
   const [formData, setFormData] = useState("");
-
-  const { SentMsg } = useMsg();
+  const { sendMessage } = useSocket();
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData(e.target.value);
@@ -19,14 +18,16 @@ export const ChatMessageInput = () => {
       alert("Message cannot be empty");
       return;
     }
-    SentMsg(formData, setFormData);
+
+    sendMessage(formData);
+    setFormData("");
   };
 
   return (
     <div>
       <form onSubmit={handleSentMsg} className="flex items-center gap-2">
         <Input
-          placeholder="hello..."
+          placeholder="Type a message..."
           aria-label="Type your message"
           value={formData}
           onChange={handleChangeInput}
