@@ -228,11 +228,11 @@ const AddPocketItemCard = ({ setShowCard }: AddPocketItemCardType) => {
             <img src={SVG.Key} alt="" className="w-9 h-9 dark:invert" />
           </Button>
 
-          <Button
+          {/* <Button
             type="button"
             className="h-14 w-14 rounded-md flex justify-center items-center bg-gray-200 dark:bg-gray-700 hover:bg-yellow-300 dark:hover:bg-yellow-500">
             <img src={SVG.Clip} alt="" className="w-9 h-9 dark:invert" />
-          </Button>
+          </Button> */}
 
           <Button
             type="submit"
