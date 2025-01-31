@@ -32,7 +32,17 @@ const msgSlice = createSlice({
       state.messages = action.payload;
     },
     addMessage: (state, action: PayloadAction<Msg>) => {
-      state.messages.push(action.payload);
+      // Check for duplicates before adding
+      const isDuplicate = state.messages.some(
+        (msg) => 
+          msg.senderId === action.payload.senderId && 
+          msg.message === action.payload.message &&
+          msg.createdAt === action.payload.createdAt
+      );
+      
+      if (!isDuplicate) {
+        state.messages.push(action.payload);
+      }
     },
     chatReject: (state) => {
       state.isConversationLoading = false;
@@ -40,6 +50,9 @@ const msgSlice = createSlice({
     setSelectedUser: (state, action: PayloadAction<User>) => {
       state.selectedUser = action.payload;
       state.messages = []; // Clear messages when switching users
+    },
+    clearMessages: (state) => {
+      state.messages = [];
     },
   },
 });
@@ -53,6 +66,7 @@ export const {
   usersReject,
   setSelectedUser,
   addMessage,
+  clearMessages,
 } = msgSlice.actions;
 
 export default msgSlice.reducer;
