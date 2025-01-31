@@ -25,17 +25,21 @@ const msgSlice = createSlice({
       state.isChatUsersLoading = false;
     },
     chatPending: (state) => {
-      state.isConversationLoading = false;
+      state.isConversationLoading = true;
     },
     chatFullFill: (state, action: PayloadAction<Msg[]>) => {
       state.isConversationLoading = false;
       state.messages = action.payload;
+    },
+    addMessage: (state, action: PayloadAction<Msg>) => {
+      state.messages.push(action.payload);
     },
     chatReject: (state) => {
       state.isConversationLoading = false;
     },
     setSelectedUser: (state, action: PayloadAction<User>) => {
       state.selectedUser = action.payload;
+      state.messages = []; // Clear messages when switching users
     },
   },
 });
@@ -48,6 +52,7 @@ export const {
   usersPending,
   usersReject,
   setSelectedUser,
+  addMessage,
 } = msgSlice.actions;
 
 export default msgSlice.reducer;

@@ -3,16 +3,21 @@ import { ChatMessageInput } from "@/components/Msg/ChatMessageInput";
 import { ChatUserHeader } from "@/components/Msg/ChatUserHeader";
 import { useMsg } from "@/hooks/userMsg";
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
-const MessageScree = () => {
+const MessageScreen = () => {
   const { GetConversations } = useMsg();
+  const { selectedUser } = useSelector((state: RootState) => state.msg);
 
   useEffect(() => {
-    GetConversations();
-  }, [GetConversations]);
+    if (selectedUser) {
+      GetConversations();
+    }
+  }, [GetConversations, selectedUser]);
 
   return (
-    <div className="h-full ">
+    <div className="h-full">
       <ChatUserHeader />
       <ChatConversationContainer />
       <ChatMessageInput />
@@ -20,4 +25,4 @@ const MessageScree = () => {
   );
 };
 
-export default MessageScree;
+export default MessageScreen;
