@@ -20,9 +20,11 @@ const MessageScreen = () => {
   }, [GetConversations, selectedUser, dispatch]);
 
   return (
-    <div className="h-full">
+    <div className="h-[calc(100vh-120px)] flex flex-col">
       <ChatUserHeader />
-      <ChatConversationContainer />
+      <div className="flex-1 overflow-hidden">
+        <ChatConversationContainer />
+      </div>
       <ChatMessageInput />
     </div>
   );

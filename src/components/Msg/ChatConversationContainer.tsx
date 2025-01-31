@@ -1,12 +1,22 @@
 import { RootState } from "@/store/store";
 import { useSelector } from "react-redux";
+import { useRef, useEffect } from "react";
 
 export const ChatConversationContainer = () => {
   const { messages } = useSelector((state: RootState) => state.msg);
   const { authUser } = useSelector((state: RootState) => state.auth);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
-    <div>
+    <div className="h-full overflow-y-auto p-4">
       <div className="space-y-4">
         {messages.map((msg, idx) => {
           const isMe = msg.senderId === authUser?._id;
@@ -18,7 +28,7 @@ export const ChatConversationContainer = () => {
               <div className="max-w-[80%]">
                 <div
                   className={`
-                  w-full rounded-t-xl  p-2 text-sm font-normal 
+                  w-full rounded-t-xl p-2 text-sm font-normal 
                   ${
                     isMe
                       ? "bg-primary text-primary-foreground rounded-l-xl"
@@ -42,6 +52,7 @@ export const ChatConversationContainer = () => {
             </div>
           );
         })}
+        <div ref={messagesEndRef} />
       </div>
     </div>
   );
