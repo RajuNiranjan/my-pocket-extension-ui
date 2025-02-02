@@ -1,10 +1,11 @@
 import { Pocket } from "@/store/types/pocket.type";
 import { SVG } from "@/utils/svg";
 import { useState } from "react";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
+import { Input } from "../../ui/input";
+import { Textarea } from "../../ui/textarea";
 import { usePocket } from "@/hooks/usePocket";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
+import { SharePocketItemMenu } from "./SharePocketItemMenu";
 
 export const AccordionCard = ({ item }: { item: Pocket }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -60,6 +61,7 @@ export const AccordionCard = ({ item }: { item: Pocket }) => {
   return (
     <div className="w-full space-y-4 pb-4">
       <div className="flex justify-end gap-2">
+        <SharePocketItemMenu />
         <img
           src={isEditing ? SVG.X : SVG.Edit}
           alt=""
@@ -87,8 +89,7 @@ export const AccordionCard = ({ item }: { item: Pocket }) => {
             {!isEditing && (
               <div
                 className="absolute cursor-pointer w-max right-5 inset-y-3"
-                onClick={() => handleCopy(formData.description, "description")}
-              >
+                onClick={() => handleCopy(formData.description, "description")}>
                 <img
                   src={copiedField === "description" ? SVG.Check : SVG.Copy}
                   alt="copy_icon"
@@ -122,8 +123,9 @@ export const AccordionCard = ({ item }: { item: Pocket }) => {
             {!isEditing && (
               <div
                 className="absolute cursor-pointer w-max right-5 inset-y-3"
-                onClick={() => handleCopy(formData.pocket_userName, "username")}
-              >
+                onClick={() =>
+                  handleCopy(formData.pocket_userName, "username")
+                }>
                 <img
                   src={copiedField === "username" ? SVG.Check : SVG.Copy}
                   alt="copy_icon"
@@ -156,8 +158,7 @@ export const AccordionCard = ({ item }: { item: Pocket }) => {
             />
             <div
               className="absolute cursor-pointer w-max right-14 inset-y-3"
-              onClick={() => setShowPassword((prev) => !prev)}
-            >
+              onClick={() => setShowPassword((prev) => !prev)}>
               <img
                 src={showPassword ? SVG.EyeOpen : SVG.EyeClose}
                 alt="eye_icon"
@@ -167,8 +168,9 @@ export const AccordionCard = ({ item }: { item: Pocket }) => {
             {!isEditing && (
               <div
                 className="absolute cursor-pointer w-max right-5 inset-y-3"
-                onClick={() => handleCopy(formData.pocket_password, "password")}
-              >
+                onClick={() =>
+                  handleCopy(formData.pocket_password, "password")
+                }>
                 <img
                   src={copiedField === "password" ? SVG.Check : SVG.Copy}
                   alt="copy_icon"
@@ -190,16 +192,14 @@ export const AccordionCard = ({ item }: { item: Pocket }) => {
                 {isEditing ? (
                   <div
                     className="absolute -top-2 -right-2 w-7 h-7 bg-red-500 rounded-full flex items-center justify-center cursor-pointer hover:bg-red-600"
-                    onClick={() => handleRemoveImage(index)}
-                  >
+                    onClick={() => handleRemoveImage(index)}>
                     <img src={SVG.X} alt="remove" className="w-5 h-5 invert" />
                   </div>
                 ) : (
                   <a
                     href={image}
                     download
-                    className="absolute -top-2 -right-2 w-7 h-7 bg-gray-700 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-600"
-                  >
+                    className="absolute -top-2 -right-2 w-7 h-7 bg-gray-700 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-600">
                     <img
                       src={SVG.Download}
                       alt="download"
@@ -217,8 +217,7 @@ export const AccordionCard = ({ item }: { item: Pocket }) => {
         <div className="flex justify-end">
           <Button
             onClick={handleUpdate}
-            className="bg-gray-800 hover:bg-gray-700 text-white dark:bg-gray-200 dark:hover:bg-gray-300 dark:text-gray-800"
-          >
+            className="bg-gray-800 hover:bg-gray-700 text-white dark:bg-gray-200 dark:hover:bg-gray-300 dark:text-gray-800">
             Save Changes
           </Button>
         </div>
