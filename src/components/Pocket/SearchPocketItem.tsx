@@ -1,10 +1,24 @@
 import { Input } from "../ui/input";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { pocketFullFill, pocketPending, pocketReject } from "@/store/features/pocket.slice";
 import { axiosInstance } from "@/utils/axios";
-import { debounce } from "lodash";
+
+
+const useDebounce = (callback: Function, delay: number) => {
+  const timeoutRef = useRef<NodeJS.Timeout>();
+
+  return useCallback((...args: any[]) => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      callback(...args);
+    }, delay);
+  }, [callback, delay]);
+};
 
 export const SearchPocketItem = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -13,11 +27,11 @@ export const SearchPocketItem = () => {
   const { isPocketLoading } = useSelector((state: RootState) => state.pocket);
   const token = localStorage.getItem("pocket");
 
-  const searchPocketItems = async (title: string) => {
+  const searchPocketItems = useCallback(async (title: string) => {
     setNoResults(false);
     
     if (!title.trim()) {
-      // If search is empty, fetch all items
+      
       try {
         const res = await axiosInstance.get("/pocket", {
           headers: {
@@ -50,19 +64,14 @@ export const SearchPocketItem = () => {
         dispatch(pocketReject(error.message || "Error searching items"));
       }
     }
-  };
+  }, [dispatch, token]);
 
-  // Debounce the search function to avoid too many API calls
-  const debouncedSearch = debounce(searchPocketItems, 300);
+  // Replace lodash debounce with custom hook
+  const debouncedSearch = useDebounce(searchPocketItems, 300);
 
   useEffect(() => {
     debouncedSearch(searchTerm);
-    
-    // Cleanup
-    return () => {
-      debouncedSearch.cancel();
-    };
-  }, [searchTerm]);
+  }, [searchTerm, debouncedSearch]);
 
   return (
     <div className="space-y-2">
