@@ -31,7 +31,7 @@ import Download from "@/assets/download.svg";
 import Chat from "@/assets/chat.svg";
 import Group from "@/assets/group.svg";
 import Share from "@/assets/share.svg";
-
+import AddUser from "@/assets/addUser.svg";
 export const SVG = {
   EyeOpen,
   EyeClose,
@@ -66,4 +66,5 @@ export const SVG = {
   Chat,
   Group,
   Share,
+  AddUser,
 };

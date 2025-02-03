@@ -14,7 +14,6 @@ interface LastMessage {
 
 export const ChatUserCard = () => {
   const { chatUsers } = useSelector((state: RootState) => state.msg);
-  const { authUser } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
   const [lastMessages, setLastMessages] = useState<Record<string, LastMessage>>({});
 
