@@ -13,7 +13,7 @@ export const usePocket = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { authUser } = useSelector((state: RootState) => state.auth);
   const token = localStorage.getItem("pocket");
-
+  const { selectedUserId,selectedPocketItemId } = useSelector((state: RootState) => state.pocket);
   const getPocketItems = useCallback(async () => {
     if (!token) {
       console.error("Authorization token is missing.");
@@ -135,10 +135,53 @@ export const usePocket = () => {
     [dispatch, token, getPocketItems]
   );
 
+
+  const getSharedPocketItems = useCallback(async () => {
+    if (!token) {
+      console.error("Authorization token is missing.");
+      return;
+    }
+    dispatch(pocketPending());
+    try {
+      const res = await axiosInstance.get(`/pocket/shared/`,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+        console.log("shared pocket items",res.data);
+      dispatch(pocketFullFill(res.data));
+    } catch (error) {
+      console.error("Error fetching shared pocket items:", error);
+      dispatch(pocketReject(error as string));
+    }
+  }, [dispatch, token]);
+
+  const sharePocketItem = useCallback(async () => {
+    if (!token) {
+      console.error("Authorization token is missing.");
+      return;
+    }
+    dispatch(pocketPending());
+    try {
+      const res = await axiosInstance.post(`/pocket/${selectedUserId}/share/${selectedPocketItemId}`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(res.data);
+      
+    } catch (error) {
+      console.error("Error sharing pocket item:", error);
+      dispatch(pocketReject(error as string));
+    }
+  }, [dispatch, token]);    
+
   return {
     addPocketItem,
     getPocketItems,
     DeletePocketItem,
     UpdatePocketItem,
+    getSharedPocketItems,
+    sharePocketItem,
   };
 };

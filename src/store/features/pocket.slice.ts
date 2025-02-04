@@ -5,6 +5,9 @@ const initialState: PocketType = {
   pocketItem: [],
   isPocketLoading: false,
   error: null,
+  selectedPocketItemId: null,
+  sharedPocketItem: [],
+  selectedUserId: null,
 };
 
 const pocketSlice = createSlice({
@@ -22,9 +25,20 @@ const pocketSlice = createSlice({
       state.isPocketLoading = false;
       state.error = action.payload;
     },
+    setSelectedPocketItemId: (state, action: PayloadAction<string>) => {
+      state.selectedPocketItemId = action.payload;
+    },
+    setSelectedUserId: (state, action: PayloadAction<string>) => {
+      state.selectedUserId = action.payload;
+    },
   },
 });
 
-export const { pocketPending, pocketFullFill, pocketReject } =
-  pocketSlice.actions;
+export const {
+  pocketPending,
+  pocketFullFill,
+  pocketReject,
+  setSelectedPocketItemId,
+  setSelectedUserId,
+} = pocketSlice.actions;
 export default pocketSlice.reducer;

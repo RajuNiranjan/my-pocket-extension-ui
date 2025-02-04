@@ -5,12 +5,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { AccordionCard } from "./AccordionCard";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { Pocket } from "@/store/types/pocket.type";
-
+import { setSelectedPocketItemId } from "@/store/features/pocket.slice";
 export const PocketAccordion = () => {
   const { pocketItem } = useSelector((state: RootState) => state.pocket);
+  const dispatch = useDispatch();  
+
 
   return (
     <div className="bg-white dark:bg-gray-900  rounded-lg shadow-sm">
@@ -19,6 +21,7 @@ export const PocketAccordion = () => {
           Array.isArray(pocketItem) &&
           pocketItem.map((item: Pocket, idx: number) => (
             <AccordionItem
+              onClick={() => dispatch(setSelectedPocketItemId(item._id))}
               key={idx}
               value={`item-${idx}`}
               className="border border-gray-300 dark:border-gray-700 rounded-lg data-[state=open]:border-gary-800 dark:data-[state=open]:border-gray-200 transition-all duration-300">

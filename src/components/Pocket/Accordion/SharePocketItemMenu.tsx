@@ -10,21 +10,28 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import { useMsg } from "@/hooks/userMsg";
 import { useEffect } from "react";
+import {setSelectedUserId} from '@/store/features/pocket.slice'
+import { usePocket } from "@/hooks/usePocket";
 
 export const SharePocketItemMenu = () => {
   const { GetChatUsers } = useMsg();
-
+  const dispatch = useDispatch();
+  const { sharePocketItem } = usePocket();
   useEffect(() => {
     GetChatUsers();
   }, [GetChatUsers]);
 
   const { chatUsers } = useSelector((state: RootState) => state.msg);
 
-  console.log("chat users", chatUsers);
+  const handleSharePocketItem = (userId: string) => {
+    dispatch(setSelectedUserId(userId));
+    sharePocketItem();
+  }
+
 
   return (
     <div>
@@ -46,7 +53,7 @@ export const SharePocketItemMenu = () => {
           <DropdownMenuSeparator />
           {chatUsers.map((user, idx) => (
             <DropdownMenuItem key={idx}>
-              <div className="flex items-center gap-2 cursor-pointer">
+              <div onClick={()=> handleSharePocketItem(user._id)} className="flex items-center gap-2 cursor-pointer">
                 <img src={user.profilePic} alt="" className="h-5 w-5" />
                 <p>{user.email}</p>
               </div>

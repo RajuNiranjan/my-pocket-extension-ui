@@ -9,12 +9,18 @@ import { PocketAccordion } from "@/components/Pocket/Accordion/PocketAccordion";
 
 const HomeScreen = () => {
   const [showCard, setShowCard] = useState(false);
-  const { getPocketItems } = usePocket();
+  const { getPocketItems, getSharedPocketItems } = usePocket();
   const { theme } = useSelector((state: RootState) => state.theme);
+  const { selectedUserId,selectedPocketItemId } = useSelector((state: RootState) => state.pocket);
+
+  console.log("selectedUserId",selectedUserId,"selectedPocketItemId",selectedPocketItemId);
+  
+
 
   useEffect(() => {
-    getPocketItems();
-  }, [getPocketItems]);
+      getPocketItems();
+    getSharedPocketItems();
+  }, [getPocketItems,getSharedPocketItems]);
   return (
     <div
       className={`overflow-y-auto space-y-4 p-2 relative  ${
