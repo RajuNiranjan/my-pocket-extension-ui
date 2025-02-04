@@ -42,10 +42,11 @@ const ChatsScreen = () => {
           <ChatUserCard />
         </TabsContent>
         <TabsContent value="groups" className="dark:bg-gray-900">
-          Groups Will comes here
+          Groups Will comes here soon
         </TabsContent>
         <TabsContent value="mutual" className="dark:bg-gray-900">
-          <AddNetworkCard />
+          add network soon
+          {/* <AddNetworkCard /> */}
         </TabsContent>
       </Tabs>
     </div>
