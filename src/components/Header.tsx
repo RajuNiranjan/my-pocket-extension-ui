@@ -4,7 +4,7 @@ import { RootState } from "../store/store";
 import { LogoAnimation } from "./LogoAnimation";
 import { SVG } from "../utils/svg";
 import ThemeSwitch from "./ThemeControllers/ThemeSwitch";
-import { NotificationsMenu } from "./NotificationsMenu/NotificationsMenu";
+// import { NotificationsMenu } from "./NotificationsMenu/NotificationsMenu";
 
 export const Header = () => {
   const { authUser } = useSelector((state: RootState) => state.auth);
@@ -23,7 +23,7 @@ export const Header = () => {
           />
         </NavLink>
 
-        <NotificationsMenu />
+        {/* <NotificationsMenu /> */}
 
         <ThemeSwitch />
 

@@ -5,7 +5,7 @@ import { Input } from "../../ui/input";
 import { Textarea } from "../../ui/textarea";
 import { usePocket } from "@/hooks/usePocket";
 import { Button } from "../../ui/button";
-import { SharePocketItemMenu } from "./SharePocketItemMenu";
+// import { SharePocketItemMenu } from "./SharePocketItemMenu";
 
 export const AccordionCard = ({ item }: { item: Pocket }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -61,7 +61,7 @@ export const AccordionCard = ({ item }: { item: Pocket }) => {
   return (
     <div className="w-full space-y-4 pb-4">
       <div className="flex justify-end gap-2">
-        <SharePocketItemMenu />
+        {/* <SharePocketItemMenu /> */}
         <img
           src={isEditing ? SVG.X : SVG.Edit}
           alt=""
